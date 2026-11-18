@@ -67,3 +67,15 @@ def test_old_observation_excluded_from_fresh_comparison(tmp_path):
     path=setup_db(tmp_path)
     storage.save_check('s','ok',[item()],checked_at='2020-01-01T00:00:00+00:00',path=path)
     assert comparable_beer(frame(storage.current_rows(path))).empty
+
+
+def test_removed_pub_does_not_reappear_from_existing_sqlite_history(tmp_path):
+    path=setup_db(tmp_path)
+    storage.save_check('s','ok',[item()],path=path)
+    assert len(storage.history_rows(path))==1
+    assert len(storage.diagnostics(path))==1
+    # The historical observations remain auditable, but removed sources are disabled.
+    storage.sync_sources([],path)
+    assert storage.history_rows(path)==[]
+    assert storage.diagnostics(path)==[]
+    assert storage.current_rows(path)==[]
