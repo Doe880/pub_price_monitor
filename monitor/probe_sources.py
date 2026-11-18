@@ -11,12 +11,22 @@ from .fetch import Fetcher
 from .models import clean
 
 
-def inspect(url):
+def inspect(url, format='html', allow_ocr=False, wait_selector=None):
     from urllib.parse import urlsplit
     with TemporaryDirectory() as tmp:
         fetcher = Fetcher(Path(tmp), {urlsplit(url).hostname})
         try:
-            html = fetcher.get(url)
+            if format in {'pdf', 'image'}:
+                from .document_menus import extract_text
+                data = fetcher.get(url, kind=format)
+                extracted, used_ocr = extract_text(data, {'format':format,'allow_ocr':allow_ocr})
+                print('URL:',url,'format:',format,'OCR:',used_ocr,'bytes:',len(data))
+                print('TEXT PREVIEW (не утверждённые цены):',extracted[:3000])
+                return
+            if format == 'browser':
+                html = fetcher.get_dynamic(url, {'format':'browser','wait_selector':wait_selector})
+            else:
+                html = fetcher.get(url)
             soup = BeautifulSoup(html, 'html.parser')
             for tag in soup(['script','style','noscript']):
                 tag.decompose()
@@ -38,9 +48,12 @@ def inspect(url):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('urls',nargs='+')
+    parser.add_argument('--format',choices=['html','pdf','image','browser'],default='html')
+    parser.add_argument('--allow-ocr',action='store_true')
+    parser.add_argument('--wait-selector',help='Обязательный CSS селектор для browser')
     args = parser.parse_args()
     for url in args.urls:
-        inspect(url)
+        inspect(url,args.format,args.allow_ocr,args.wait_selector)
 
 
 if __name__=='__main__':
