@@ -1432,7 +1432,7 @@
     "enabled": true,
     "sources": [],
     "registry_status": "Требует подтверждения",
-    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён. В каталогах Ye Olde Shed фигурирует по этому же адресу; возможное альтернативное название или смена вывески, не создавать отдельный дубль до проверки.",
     "discovered_on": "2026-11-16",
     "discovery_url": "https://moscowpubs.ru/map/",
     "coverage": {
@@ -3806,6 +3806,214 @@
         "reason": "На сайте есть разделы еды и пива, но нет текстовых карточек цен. Разбор встроенного графического меню ещё не реализован.",
         "checked_on": "2026-11-17",
         "evidence_url": "https://thelibertinespub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "connolly_station",
+    "name": "Connolly Station Pub",
+    "district": "ЦАО",
+    "area": "Тверской",
+    "address": "Москва, Столешников переулок, 8",
+    "website": "https://connollypub.com/",
+    "format": "Кандидат: паб / гастропаб",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Заведение внесено в реестр; автоматический сбор цен ещё не подключён. Проверка актуальности адреса и работы заведения обязательна.",
+    "discovered_on": "2026-11-18",
+    "discovery_url": "https://moscowpubs.ru/pub/connolly-station/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальное меню с ценами для автоматического разбора пока не подтверждено.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://connollypub.com/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальное меню с ценами для автоматического разбора пока не подтверждено.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://connollypub.com/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "trappist_moscow",
+    "name": "Траппист",
+    "district": "ЦАО",
+    "area": "Тверской",
+    "address": "Москва, Большой Черкасский переулок, 15–17, стр. 1",
+    "website": "https://trappist.clients.site/",
+    "format": "Кандидат: паб / гастропаб",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Заведение внесено в реестр; автоматический сбор цен ещё не подключён. Проверка актуальности адреса и работы заведения обязательна.",
+    "discovered_on": "2026-11-18",
+    "discovery_url": "https://trappist.clients.site/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Сайт содержит динамический каталог без подтверждённых цен в полученном HTML; отзывы сообщают о возможном закрытии, работу необходимо проверить.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://trappist.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Сайт содержит динамический каталог без подтверждённых цен в полученном HTML; отзывы сообщают о возможном закрытии, работу необходимо проверить.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://trappist.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "iggy_pub",
+    "name": "Iggy Pub",
+    "district": "ЦАО",
+    "area": "Арбат",
+    "address": "Москва, Калашный переулок, 9",
+    "website": "https://iggypub.ru/",
+    "format": "Кандидат: паб / гастропаб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "iggy_beer",
+        "url": "https://iggypub.ru/",
+        "kind": "beer",
+        "parser": "iggy",
+        "min_items": 15
+      }
+    ],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Парсер пива протестирован на фикстурах. Живой запуск 18.11.2026 остановлен на проверке robots.txt (0 цен); доступность для автоматического сбора не подтверждена. Горячие блюда на сайте не представлены.",
+    "discovered_on": "2026-11-18",
+    "discovery_url": "https://iggypub.ru/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Нет меню горячих блюд",
+        "reason": "На официальной странице указан раздел закусок, но нет отдельного меню горячих блюд; цены горячего не выдумываются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://iggypub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено, сбор не подтверждён",
+        "reason": "HTML-парсер разработан и прошёл модульные тесты, но при живом запуске в GitHub Actions 18.11.2026 сбор остановлен: не удалось проверить robots.txt. Фактических цен в базу не загружено. До успешной проверки robots.txt автоматический сбор недоступен.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://iggypub.ru/",
+        "source_ids": [
+          "iggy_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "na_kranah",
+    "name": "На кранах",
+    "district": "ЦАО",
+    "area": "Тверской",
+    "address": "Москва, Цветной бульвар, 19, стр. 5",
+    "website": "https://russiancraftbeer.ru/venues/kraftgril-bar-na-kranah",
+    "format": "Кандидат: паб / гастропаб",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Заведение внесено в реестр; автоматический сбор цен ещё не подключён. Проверка актуальности адреса и работы заведения обязательна.",
+    "discovered_on": "2026-11-18",
+    "discovery_url": "https://russiancraftbeer.ru/venues/kraftgril-bar-na-kranah",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Адрес найден в профильном каталоге, действующее официальное меню и цены требуют проверки.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://russiancraftbeer.ru/venues/kraftgril-bar-na-kranah",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Адрес найден в профильном каталоге, действующее официальное меню и цены требуют проверки.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://russiancraftbeer.ru/venues/kraftgril-bar-na-kranah",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "beer_brut",
+    "name": "Beer&Brut",
+    "district": "ЦАО",
+    "area": "Басманный",
+    "address": "Москва, улица Покровка, 26/1, стр. 2",
+    "website": "https://beerandbrut.ru/",
+    "format": "Кандидат: паб / гастропаб",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Заведение внесено в реестр; автоматический сбор цен ещё не подключён. Проверка актуальности адреса и работы заведения обязательна.",
+    "discovered_on": "2026-11-18",
+    "discovery_url": "https://russiancraftbeer.ru/venues/beer-brut",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальное меню с ценами не подтверждено в доступном для сборщика формате.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://beerandbrut.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальное меню с ценами не подтверждено в доступном для сборщика формате.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://beerandbrut.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "krombacher_beer_kitchen",
+    "name": "Krombacher Beer Kitchen",
+    "district": "ЦАО",
+    "area": "Тверской",
+    "address": "Москва, 1-я Тверская-Ямская улица, 19",
+    "website": "https://beerkitchen.moscow/",
+    "format": "Кандидат: паб / гастропаб",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Заведение внесено в реестр; автоматический сбор цен ещё не подключён. Проверка актуальности адреса и работы заведения обязательна.",
+    "discovered_on": "2026-11-18",
+    "discovery_url": "https://beerkitchen.moscow/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальный сайт найден; необходимо проверить доступность меню и разработать подходящий адаптер.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://beerkitchen.moscow/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальный сайт найден; необходимо проверить доступность меню и разработать подходящий адаптер.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://beerkitchen.moscow/",
         "source_ids": []
       }
     }

@@ -4,7 +4,7 @@ from monitor.parsers import tilda_parts
 
 def test_expanded_registry_unique_branch_ids_and_official_sources():
     pubs=load_sources()
-    assert len(pubs)==100
+    assert len(pubs)==106
     assert len({p['id'] for p in pubs})==len(pubs)
     assert len({p['name'] for p in pubs})==len(pubs)
     assert {p['district'] for p in pubs}=={'ЦАО','САО','СВАО'}
@@ -34,3 +34,20 @@ def test_invalid_official_edition_volume_is_not_corrected_by_guess():
     assert rows[0].volume_ml is None and rows[0].note
     assert rows[0].portion=='0.44 мл (как на сайте)'
     rows[0].validate()
+
+
+def test_added_central_pubs_have_explicit_unconnected_coverage():
+    pubs = {p["id"]: p for p in load_sources()}
+    added = {"connolly_station", "trappist_moscow", "iggy_pub", "na_kranah", "beer_brut", "krombacher_beer_kitchen"}
+    assert added <= pubs.keys()
+    for pub_id in added:
+        pub = pubs[pub_id]
+        assert pub["district"] == "ЦАО"
+        if pub_id == "iggy_pub":
+            assert len(pub["sources"]) == 1
+            assert pub["coverage"]["beer"]["state"] == "connected"
+            assert pub["coverage"]["food"]["state"] == "unavailable"
+        else:
+            assert pub["sources"] == []
+            assert all(pub["coverage"][kind]["state"] == "needs_adapter" for kind in ("food", "beer"))
+    assert "Ye Olde Shed" in pubs["mp_4603"]["registry_note"]

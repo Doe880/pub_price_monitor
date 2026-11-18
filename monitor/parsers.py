@@ -274,6 +274,9 @@ def parse_beeftime(html, source):
 
 
 def parse(html, source, fetcher):
+    if source['parser'] == 'iggy':
+        from .iggy import parse_iggy
+        return parse_iggy(html, source)
     if source['parser'] == 'post_pdf':
         from .pdf_menus import parse_pdf
         return parse_pdf(html, source)
