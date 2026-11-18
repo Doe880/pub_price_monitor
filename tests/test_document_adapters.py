@@ -62,7 +62,7 @@ def test_invalid_document_does_not_publish():
     with pytest.raises(TextExtractionError, match="Неверная сигнатура"):
         extract_text(b"hello world", source())
     with pytest.raises(TextExtractionError, match="Некорректный документ"):
-        extract_text(b"%PDF" + b"X" * 12_000_001, source())
+        extract_text(b"%PDF" + b"X" * 24_000_001, source())
 
 
 def test_ocr_flag_forces_partial_review(monkeypatch):
