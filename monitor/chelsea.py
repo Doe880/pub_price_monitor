@@ -48,9 +48,21 @@ def parse_chelsea(html, source):
         item.validate()
         items.append(item)
         found.add(section)
-    required={'Блюда на огне','Горячие блюда'} if kind=='food' else BEER
+    required={'Блюда на огне','Горячие блюда'} if kind=='food' else {'Бутылочное пиво'}
     if not required <= found:
         raise ValueError('Chelsea: не найдены разделы меню: '+', '.join(sorted(required-found)))
     if len(items) < source.get('min_items',1):
         raise ValueError('Chelsea: извлечено слишком мало цен')
-    return deduplicate(items), warnings
+    by_key = {}
+    conflicting = set()
+    for item in items:
+        if item.key in by_key and by_key[item.key].price != item.price:
+            conflicting.add(item.key)
+        by_key[item.key] = item
+    if conflicting:
+        warnings.append('Исключены конфликтующие позиции: ' +
+                        ', '.join(sorted({by_key[k].name for k in conflicting})))
+    clean_items = deduplicate([v for key,v in by_key.items() if key not in conflicting])
+    if len(clean_items) < source.get('min_items', 1):
+        raise ValueError('Chelsea: после исключения конфликтов осталось мало позиций')
+    return clean_items, warnings
