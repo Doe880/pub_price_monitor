@@ -78,7 +78,8 @@ def main():
     args=parser.parse_args()
     archived=json.loads(Path(args.registry).read_text(encoding="utf-8"))
     pubs=archived["pubs"] if isinstance(archived,dict) else archived
-    checks=json.loads(Path(args.audit).read_text(encoding="utf-8"))
+    audit=json.loads(Path(args.audit).read_text(encoding="utf-8"))
+    checks=audit["results"] if isinstance(audit,dict) else audit
     kept,removed=save_outputs(pubs,checks,Path(args.output_dir))
     print(f"Active: {len(kept)}, removed: {len(removed)}, checked: {len(checks)}")
     if not kept:
