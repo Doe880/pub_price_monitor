@@ -49,6 +49,19 @@ python -m playwright install chromium
 
 Браузер разрешает запросы только к явно доверенным HTTPS-доменам и предварительно проверяет `robots.txt`. Сторонние домены заблокированы по умолчанию. Если сайт использует API на другом домене, его следует отдельно проверить и добавить в `browser_hosts` **и** реестр разрешённых хостов. Перенаправления за пределы проверенной конфигурации не допускаются.
 
+## Диагностика новых официальных меню до подключения
+
+Не нужно сразу менять `sources.json`. Для проверки конкретного URL можно получить предварительный текст **без записи цен в SQLite**:
+
+```powershell
+python -m monitor.probe_sources https://official.example/menu.pdf --format pdf
+python -m monitor.probe_sources https://official.example/menu.pdf --format pdf --allow-ocr
+python -m monitor.probe_sources https://official.example/menu.png --format image
+python -m monitor.probe_sources https://official.example/menu --format browser --wait-selector ".menu-item"
+```
+
+Укажите реальные ссылки официальных сайтов; `official.example` — синтаксический пример, а не действующее меню. Для OCR установите обязательные необязательные зависимости и системную программу Tesseract. Пробный текст не считается подтверждённым прайсом и не обновляет базу.
+
 ## Контроль качества
 
 - Не допускается собирать неопределённую цену, не соответствующую указанной порции, или смешивать разделы кухни и напитков.
