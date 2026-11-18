@@ -35,7 +35,7 @@ class Fetcher:
         if p.scheme != 'https' or p.hostname not in self.hosts or p.username or p.password or p.port not in {None, 443}:
             raise ValueError('URL вне разрешённых официальных источников: ' + url)
 
-    def _get(self, url):
+    def _get(self, url, max_bytes=12_000_000):
         for _ in range(5):
             self._check_url(url)
             host = urlsplit(url).hostname
@@ -55,7 +55,7 @@ class Fetcher:
                 total = 0
                 for chunk in r.iter_content(65536):
                     total += len(chunk)
-                    if total > 12_000_000:
+                    if total > max_bytes:
                         raise ValueError('Ответ больше 12 МБ')
                     chunks.append(chunk)
                 return b''.join(chunks), r.headers.get('Content-Type', ''), url
@@ -83,8 +83,9 @@ class Fetcher:
             raise RuntimeError('Сбор запрещён robots.txt: ' + url)
 
     def save_artifact(self, url, data, kind):
-        if len(data) > 12_000_000:
-            raise ValueError('Ответ больше 12 МБ')
+        limit = 24_000_000 if kind == 'pdf' else 12_000_000
+        if len(data) > limit:
+            raise ValueError('Размер файла превышает допустимый лимит')
         digest = hashlib.sha256(data).hexdigest()
         filename = hashlib.sha256((url + ':' + kind).encode()).hexdigest()[:14] + '.' + kind
         path = self.directory / filename
@@ -100,7 +101,7 @@ class Fetcher:
             return self.cache[url]
         self.check_robots(url)
         host = urlsplit(url).hostname
-        b, ct, final_url = self._get(url)
+        b, ct, final_url = self._get(url, max_bytes=24_000_000 if kind == 'pdf' else 12_000_000)
         if urlsplit(final_url).hostname != host:
             raise RuntimeError('Источник перенаправил на другой домен; проверьте конфигурацию')
         self.check_robots(final_url)
