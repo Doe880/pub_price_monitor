@@ -1,0 +1,107 @@
+{
+  "version": "2.2",
+  "python": "3.10.22",
+  "tests_passed": 37,
+  "new_sources": [
+    {
+      "source": "mp_4652_food",
+      "pub": "4Brewers Pub Moscow",
+      "status": "ok",
+      "count": 11,
+      "message": ""
+    },
+    {
+      "source": "mp_27_food",
+      "pub": "Black Swan",
+      "status": "ok",
+      "count": 19,
+      "message": ""
+    },
+    {
+      "source": "mp_27_beer",
+      "pub": "Black Swan",
+      "status": "ok",
+      "count": 82,
+      "message": "Объём не указан: Балтика Stout\nОбъём не указан: Балтика Stout\nОбъём не указан: Балтика Helles\nОбъём не указан: Балтика Helles\nОбъём не указан: Guinness\nОбъём не указан: Guinness\nОбъём не указан: Ballantine stout\nОбъём не указан: Ballantine stout\nОбъём не указан: Eggenberg Helle Wiesse\nОбъём не указан: Eggenberg Helle Wiesse\nОбъём не указан: Petrus Ruby\nОбъём не указан: Petrus Ruby\nОбъём не указан: Black Swan Pils\nОбъём не указан: Black Swan Pils\nОбъём не указан: Old Speckled Hen\nОбъём не указан: Old Speckled Hen\nОбъём не указан: Garigan's Sweet Stout\nОбъём не указан: Garigan's Sweet Stout\nОбъём не указан: TUT IPA\nОбъём не указан: TUT IPA\nОбъём не указан: Inedit Damm\nОбъём не указан: Inedit Damm\nОбъём не указан: Petrus Kriek\nОбъём не указан: Petrus Kriek\nОбъём не указан: Балтика Брю Медный Брюн\nОбъём не указан: Балтика Брю Техно Ипа\nОбъём не указан: Балтика Русский Имперский Стаут\nОбъём не указан: St. Feuillien Grand Cru\nОбъём не указан: Guinness AF\nОбъём не указан: Балтика 0"
+    },
+    {
+      "source": "mp_4591_food",
+      "pub": "Michael Collins",
+      "status": "ok",
+      "count": 15,
+      "message": ""
+    },
+    {
+      "source": "mp_4601_food",
+      "pub": "Purkin’s Pub — Покровка",
+      "status": "ok",
+      "count": 11,
+      "message": ""
+    },
+    {
+      "source": "mp_4601_beer",
+      "pub": "Purkin’s Pub — Покровка",
+      "status": "ok",
+      "count": 27,
+      "message": ""
+    },
+    {
+      "source": "mp_24_beer",
+      "pub": "Бобби Дэззлер",
+      "status": "ok",
+      "count": 40,
+      "message": ""
+    },
+    {
+      "source": "mp_4589_food",
+      "pub": "Лига Пап",
+      "status": "ok",
+      "count": 16,
+      "message": ""
+    },
+    {
+      "source": "ed_3586_beer",
+      "pub": "Золберг Пивной Клуб",
+      "status": "ok",
+      "count": 24,
+      "message": ""
+    },
+    {
+      "source": "ed_3686_food",
+      "pub": "Sean O’Neill Irish Pub",
+      "status": "ok",
+      "count": 23,
+      "message": ""
+    },
+    {
+      "source": "ed_3637_food",
+      "pub": "O’Donoghue’s Pub",
+      "status": "ok",
+      "count": 19,
+      "message": ""
+    },
+    {
+      "source": "ed_3637_beer",
+      "pub": "O’Donoghue’s Pub",
+      "status": "ok",
+      "count": 57,
+      "message": "Объём не указан: Балтика Helles\nОбъём не указан: Балтика Helles\nОбъём не указан: Балтика Stout\nОбъём не указан: Балтика Stout\nОбъём не указан: Ballantine Stout\nОбъём не указан: Ballantine Stout\nОбъём не указан: Ballantine Ale\nОбъём не указан: Ballantine Ale\nОбъём не указан: Rye River Irish Red Ale\nОбъём не указан: Rye River Irish Red Ale\nОбъём не указан: Hofbräuhaus Traunstein Lagerhell\nОбъём не указан: Hofbräuhaus Traunstein Lagerhell\nОбъём не указан: Guinness\nОбъём не указан: Guinness\nОбъём не указан: Rouge de Bruxelles\nОбъём не указан: Rouge de Bruxelles\nОбъём не указан: Blanche de Bruxelles\nОбъём не указан: Blanche de Bruxelles\nОбъём не указан: Stiegl Goldbrau\nОбъём не указан: Stiegl Goldbrau\nОбъём не указан: Timmermans kriek\nОбъём не указан: Timmermans kriek\nОбъём не указан: Rye River Eventide Stout\nОбъём не указан: Rye River Eventide Stout\nОбъём не указан: Rye River Retro IPA\nОбъём не указан: Rye River Retro IPA\nОбъём не указан: Bourgogne des Flandres\nОбъём не указан: Bourgogne des Flandres\nОбъём не указан: Schnitzlbaumer Hell\nОбъём не указан: Schnitzlbaumer Hell\nОбъём не указан: Tour de Grapefruit Blanche\nОбъём не указан: Tour de Grapefruit Blanche\nОбъём не указан: Black Sheep IPA 4,6%\nОбъём не указан: Black Sheep IPA 4,6%\nОбъём не указан: Brewmaster Irish Lager\nОбъём не указан: Brewmaster Irish Lager\nОбъём не указан: Bakalar Dry Hopped\nОбъём не указан: Bakalar Dry Hopped\nОбъём не указан: БАЛТИКА БРЮ Медный Брюн 0,44\nОбъём не указан: БАЛТИКА БРЮ Техно АйПиЭй 0,44 6,5%\nОбъём не указан: Guinness 0.0\nОбъём не указан: Newcastle Brown Ale 0,33\nОбъём не указан: Fuller's London Porter 5,4% 0,5\nОбъём не указан: Fuller's London Pride 4,7% 0,5\nОбъём не указан: Petrus Tripel 8% 0,33\nОбъём не указан: Petrus Red 8,5% 0,33\nОбъём не указан: Petrus Flanders 5,5% 0,33\nОбъём не указан: Leffe Brune 6,5% 0,33\nОбъём не указан: Leffe Blonde 6,6% 0,33\nОбъём не указан: Belhaven McCallum's Stout 4.1% 0,44\nОбъём не указан: HARP Irish Lager 4% 0,44\nОбъём не указан: Hobgoblin IPA 5% 0,5\nОбъём не указан: Hobgoblin Gold 4,2% 0,5"
+    },
+    {
+      "source": "mp_395_food",
+      "pub": "Post Pub",
+      "status": "partial",
+      "count": 13,
+      "message": "Сайт предупреждает об обновлении меню и возможном отсутствии позиций; цены опубликованы, наличие не подтверждено."
+    },
+    {
+      "source": "mp_395_beer",
+      "pub": "Post Pub",
+      "status": "ok",
+      "count": 16,
+      "message": "Объём не указан: POST NITRO L AGER\nОбъём не указан: POST STOU T\nОбъём не указан: RIEGELE HEFE WEISSE\nОбъём не указан: DACHA CHERRY\nОбъём не указан: BL ACK SHEEP STOUT\nОбъём не указан: BARBE RUBY\nОбъём не указан: RIEGELE COMMERZIENRAT PRIVAT\nОбъём не указан: SKAL AK DVANÁCTKA PREMIUM LEZAC\nОбъём не указан: POST HELLES\nОбъём не указан: POST IPA\nОбъём не указан: DACHA PEACH FRUIT\nОбъём не указан: MILK OF AMNESIA\nОбъём не указан: BL ANCHE DE BRABANT\nОбъём не указан: ОРИГАМИКА IPA Б/А\nОбъём не указан: ОРИГАМИКА MILK STOUT Б/А\nОбъём не указан: DACHA EXTRA STOUT"
+    }
+  ],
+  "new_price_variants": 373,
+  "full_registry_connection_complete": false
+}

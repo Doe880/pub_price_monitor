@@ -1,0 +1,3813 @@
+[
+  {
+    "id": "dubliner",
+    "name": "Дублинец",
+    "district": "ЦАО",
+    "area": "Тверской",
+    "address": "Москва, Никольская ул., 10",
+    "website": "https://dublinerpub.ru/",
+    "verified_on": "2026-11-16",
+    "format": "Ирландский паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "dubliner_food",
+        "url": "https://dublinerpub.ru/menu",
+        "parser": "dubliner",
+        "kind": "food",
+        "min_items": 10
+      },
+      {
+        "id": "dubliner_beer",
+        "url": "https://dublinerpub.ru/beer",
+        "parser": "dubliner",
+        "kind": "beer",
+        "min_items": 20
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Автоматический сбор подключён. Актуальность цен — по результату последней проверки.",
+    "discovery_url": "https://dublinerpub.ru/",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://dublinerpub.ru/menu",
+        "source_ids": [
+          "dubliner_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://dublinerpub.ru/beer",
+        "source_ids": [
+          "dubliner_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "tap_barrel",
+    "name": "Tap & Barrel",
+    "district": "ЦАО",
+    "area": "Тверской",
+    "address": "Москва, Большая Дмитровка, 13",
+    "website": "https://tbpub.ru/",
+    "verified_on": "2026-11-16",
+    "format": "Ирландский паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "tap_food",
+        "url": "https://tbpub.ru/menu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "Горячие блюда",
+          "Бургеры и сэндвичи",
+          "Гриль"
+        ],
+        "min_items": 10
+      },
+      {
+        "id": "tap_beer",
+        "url": "https://tbpub.ru/menu",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "Разливное пиво",
+          "Пиво бутылочное"
+        ],
+        "min_items": 25
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Автоматический сбор подключён. Актуальность цен — по результату последней проверки.",
+    "discovery_url": "https://tbpub.ru/",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://tbpub.ru/menu",
+        "source_ids": [
+          "tap_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://tbpub.ru/menu",
+        "source_ids": [
+          "tap_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "delirium",
+    "name": "Белая горячка / Delirium",
+    "district": "САО",
+    "area": "Савёловский",
+    "address": "Москва, Бутырская ул., 75",
+    "website": "https://delirium.pub/",
+    "verified_on": "2026-11-16",
+    "format": "Гастрономический паб",
+    "enabled": true,
+    "geo_evidence": "https://www.mos.ru/upload/content/files/41e5155a6ddc96dd14aff35814cf6a1a/6_Bytirskaya_ylica_2025.pdf",
+    "sources": [
+      {
+        "id": "delirium_food",
+        "url": "https://delirium.pub/page16202333.html",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "Горячее",
+          "Хоспер",
+          "Сэндвичи"
+        ],
+        "min_items": 8
+      },
+      {
+        "id": "delirium_beer",
+        "url": "https://delirium.pub/beer",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "Разливное пиво",
+          "Специальное пиво",
+          "Траппистские эли",
+          "Светлый эль",
+          "Темный эль",
+          "Янтарный эль",
+          "Ламбик, гёз, Оуд Борн",
+          "Фруктовое пиво",
+          "Пшеничное светлое пиво",
+          "Пилснер/ лагер",
+          "Квадрюпель",
+          "Сухой/ экстра/ имперский стаут",
+          "Сезонное пиво и лимитированные серии",
+          "Безалкогольное пиво",
+          "Красные, коричневые, темные и мягкие эли",
+          "Светлый крепкий эль"
+        ],
+        "min_items": 30
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Автоматический сбор подключён. Актуальность цен — по результату последней проверки.",
+    "discovery_url": "https://delirium.pub/",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://delirium.pub/page16202333.html",
+        "source_ids": [
+          "delirium_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://delirium.pub/beer",
+        "source_ids": [
+          "delirium_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "beeftime",
+    "name": "BeefTime",
+    "district": "СВАО",
+    "area": "Алексеевский",
+    "address": "Москва, проспект Мира, 102, стр. 1А",
+    "website": "https://www.beeftime.org/",
+    "verified_on": "2026-11-16",
+    "format": "Стейк-хаус и итальянский паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "beeftime_food",
+        "url": "https://www.beeftime.org/Меню/",
+        "parser": "beeftime",
+        "kind": "food",
+        "min_items": 15
+      },
+      {
+        "id": "beeftime_beer",
+        "url": "https://www.beeftime.org/Меню/",
+        "parser": "beeftime",
+        "kind": "beer",
+        "min_items": 8
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Автоматический сбор подключён. Актуальность цен — по результату последней проверки.",
+    "discovery_url": "https://www.beeftime.org/",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.beeftime.org/Меню/",
+        "source_ids": [
+          "beeftime_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.beeftime.org/Меню/",
+        "source_ids": [
+          "beeftime_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_4652",
+    "name": "4Brewers Pub Moscow",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большая Полянка, 65/74с3",
+    "website": "https://pub-moscow.4brewers.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_4652_food",
+        "kind": "food",
+        "url": "https://pub-moscow.4brewers.ru/food",
+        "parser": "dom",
+        "sections": [
+          "БЛЮДА",
+          "БУРГЕРЫ",
+          "ТАКО"
+        ],
+        "min_items": 3,
+        "recipe": "4brewers_food"
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/pub/4brewers-polyanka/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://pub-moscow.4brewers.ru/food",
+        "source_ids": [
+          "mp_4652_food"
+        ]
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Тап-лист и банки требуют отдельного подключения; готов только разбор кухни.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://pub-moscow.4brewers.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_26",
+    "name": "Abbey Players",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Новый Арбат, 5",
+    "website": "https://abbeyplayerstheatre.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_26_food",
+        "url": "https://abbeyplayerstheatre.ru/pubmenu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "Горячие блюда",
+          "Паста и ризотто",
+          "Бургеры и сэндвичи",
+          "Гриль"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "mp_26_beer",
+        "url": "https://abbeyplayerstheatre.ru/pubmenu",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "Разливное пиво",
+          "Бутылочное пиво"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Подключены только указанные разделы официального меню. Актуальность цен — по последней проверке.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-16",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://abbeyplayerstheatre.ru/pubmenu",
+        "source_ids": [
+          "mp_26_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://abbeyplayerstheatre.ru/pubmenu",
+        "source_ids": [
+          "mp_26_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_2096",
+    "name": "Axiom Pub Moscow",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Спартаковская площадь, 16/15с2",
+    "website": "https://basmannydvor.ru/rezidenty/axiom-pub-moscow",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_menu",
+        "status": "Нет доступного прайса",
+        "reason": "Страница резидента «Басманного двора» подтверждает заведение, но извлекаемого меню с ценами на ней нет. Отдельный официальный источник цен не подтверждён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://basmannydvor.ru/rezidenty/axiom-pub-moscow",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_menu",
+        "status": "Нет доступного прайса",
+        "reason": "Страница резидента «Басманного двора» подтверждает заведение, но извлекаемого меню с ценами на ней нет. Отдельный официальный источник цен не подтверждён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://basmannydvor.ru/rezidenty/axiom-pub-moscow",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4595",
+    "name": "Beer & Balls",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Воздвиженка, 4/7с2",
+    "website": "https://beerballs.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://beerballs.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://beerballs.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4605",
+    "name": "Beer Happens",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Сретенка, 26/1",
+    "website": "https://beer-happens.clients.site/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте владельца есть раздел «Каталог», но в полученном HTML нет товаров и цен. Нужна поддержка динамического каталога; это ограничение текущего сборщика.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://beer-happens.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте владельца есть раздел «Каталог», но в полученном HTML нет товаров и цен. Нужна поддержка динамического каталога; это ограничение текущего сборщика.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://beer-happens.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_169",
+    "name": "Beertep Craft Pub",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Адмирала Макарова, 6с13",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_27",
+    "name": "Black Swan",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Солянка, 1/2с1",
+    "website": "https://bspubshop.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_27_food",
+        "kind": "food",
+        "url": "https://bspubshop.ru/menu",
+        "parser": "tilda",
+        "sections": [
+          "горячее"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "mp_27_beer",
+        "kind": "beer",
+        "url": "https://bspubshop.ru/menu",
+        "parser": "tilda",
+        "sections": [
+          "разливное пиво",
+          "разливное пиво \"Тайной комнаты\"",
+          "бутылочное пиво",
+          "безалкогольное пиво"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://bspubshop.ru/menu",
+        "source_ids": [
+          "mp_27_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://bspubshop.ru/menu",
+        "source_ids": [
+          "mp_27_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_4592",
+    "name": "Buddy McDaniel — Покровка",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Покровка, 50/2с2",
+    "website": "https://mcdaniel.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница нужного филиала найдена. Разбор его меню ещё не реализован; цены других заведений McDaniel не копируются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://mcdaniel.ru/pokrovka",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница нужного филиала найдена. Разбор его меню ещё не реализован; цены других заведений McDaniel не копируются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://mcdaniel.ru/pokrovka",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4644",
+    "name": "Clovelly Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Сретенский бульвар, 1",
+    "website": "https://theclovelly.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На официальной странице меню не представлено текстовыми карточками с ценами. Нужен разбор встроенного графического меню.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://theclovelly.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На официальной странице меню не представлено текстовыми карточками с ценами. Нужен разбор встроенного графического меню.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://theclovelly.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4593",
+    "name": "Colin McDaniel",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Валовая, 3",
+    "website": "https://mcdaniel.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница нужного филиала найдена. Разбор его меню ещё не реализован; цены других заведений McDaniel не копируются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://mcdaniel.ru/valovaya",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница нужного филиала найдена. Разбор его меню ещё не реализован; цены других заведений McDaniel не копируются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://mcdaniel.ru/valovaya",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_537",
+    "name": "Crab Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Космодамианская набережная, 52с5",
+    "website": "https://crabpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://crabpub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://crabpub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_6640",
+    "name": "Dungeon Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Малая Почтовая, 2/2с1",
+    "website": "https://dungeon-pub.com/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://dungeon-pub.com/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://dungeon-pub.com/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_1948",
+    "name": "Edward’s Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Нижняя Сыромятническая, 10с9",
+    "website": "https://edwardsbar.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страницы кухни и бара открываются, но текстовый слой содержит только заголовки. Графическое меню ещё не подключено; отсутствие цен в HTML не означает, что их нет на изображениях.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edwardsbar.ru/kitchen_menu/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страницы кухни и бара открываются, но текстовый слой содержит только заголовки. Графическое меню ещё не подключено; отсутствие цен в HTML не означает, что их нет на изображениях.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edwardsbar.ru/kitchen_menu/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_6285",
+    "name": "Guns & Bears Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Новослободская, 46",
+    "website": "https://whiteeagles.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Найдена страница Guns & Bears на сайте ресторанной группы. Меню конкретного паба ещё не подключено; меню сидрерий группы не используется.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://whiteeagles.ru/gbpub",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Найдена страница Guns & Bears на сайте ресторанной группы. Меню конкретного паба ещё не подключено; меню сидрерий группы не используется.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://whiteeagles.ru/gbpub",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_7611",
+    "name": "Harat’s — Павелецкая",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большой Строченовский переулок, 7",
+    "website": "https://moscow.harats.com/paveleckaya/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/paveleckaya/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/paveleckaya/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_23",
+    "name": "Harat’s — Новый Арбат",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Новый Арбат, 24",
+    "website": "https://haratsarbat.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_23_food",
+        "url": "https://haratsarbat.ru/menu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "Горячие блюда",
+          "Бургеры от шефа",
+          "Колбаски"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Подключены только указанные разделы официального меню. Актуальность цен — по последней проверке.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-16",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://haratsarbat.ru/menu",
+        "source_ids": [
+          "mp_23_food"
+        ]
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Подключены карточки кухни. Пивная карта на странице не разобрана текущим адаптером; нельзя считать все цены заведения подключёнными.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://haratsarbat.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4623",
+    "name": "Harat’s — Пушечная",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Пушечная, 7/5с2",
+    "website": "https://moscow.harats.com/pushka/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/pushka/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/pushka/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_25",
+    "name": "Katie O’Shea’s",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Проспект Мира, 26с5",
+    "website": "https://katiebar.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница меню содержит графику без текстовых цен. Распознавание изображений с проверкой соответствия блюдо–цена пока не реализовано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://katiebar.ru/menu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница меню содержит графику без текстовых цен. Распознавание изображений с проверкой соответствия блюдо–цена пока не реализовано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://katiebar.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_284",
+    "name": "Lion’s Head Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Мясницкая, 15",
+    "website": "https://lhpub.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_284_food",
+        "url": "https://lhpub.ru/menu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "паста",
+          "горячие блюда",
+          "стейки",
+          "бургеры и сэндвичи"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "mp_284_beer",
+        "url": "https://lhpub.ru/menu",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "ПИВО разливное пиво",
+          "бутылочное пиво",
+          "безалкогольное пиво"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Подключены только указанные разделы официального меню. Актуальность цен — по последней проверке.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-16",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://lhpub.ru/menu",
+        "source_ids": [
+          "mp_284_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://lhpub.ru/menu",
+        "source_ids": [
+          "mp_284_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_330",
+    "name": "Lucky Pub",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Ленинградский проспект, 75к1Б",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4591",
+    "name": "Michael Collins",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Цветной бульвар, 21с2",
+    "website": "https://collinspub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_4591_food",
+        "kind": "food",
+        "url": "https://collinspub.ru/main_menu",
+        "parser": "dom",
+        "sections": [
+          "ГОРЯЧИЕ БЛЮДА",
+          "БУРГЕРЫ",
+          "СТЕЙКИ"
+        ],
+        "min_items": 3,
+        "recipe": "collins"
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://collinspub.ru/main_menu",
+        "source_ids": [
+          "mp_4591_food"
+        ]
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Пивная карта — PDF с векторными буквами: текстовое извлечение вернуло только точки. Нужен OCR с проверкой цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://files.fitzgastro.ru/collinspub/beer.pdf",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_263",
+    "name": "Mollie’s Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Мясницкая, 13с3",
+    "website": "https://www.molliespub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Сайт без www открывается; адрес с www вернул HTTP 503. Адаптер меню работающего сайта ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://molliespub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Сайт без www открывается; адрес с www вернул HTTP 503. Адаптер меню работающего сайта ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://molliespub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4598",
+    "name": "Molly Gwynn’s — Пятницкая",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Пятницкая, 24",
+    "website": "https://mollygwynnspub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Меню размещено графически; ссылка на отдельный документ ведёт к калорийности. Автоматический разбор основного меню и пивной карты ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://mollygwynnspub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Меню размещено графически; ссылка на отдельный документ ведёт к калорийности. Автоматический разбор основного меню и пивной карты ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://mollygwynnspub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_6302",
+    "name": "Old Monkey Pub — Селигерская",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Ильменский проезд, 14к3",
+    "website": "https://oldmonkey.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_menu",
+        "status": "Нет доступного прайса",
+        "reason": "В коде официального сайта загрузка тап-листа помечена как заглушка; опубликованный рабочий API с ценами для Селигерской не обнаружен. Цены другого филиала не используются.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oldmonkey.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_menu",
+        "status": "Нет доступного прайса",
+        "reason": "В коде официального сайта загрузка тап-листа помечена как заглушка; опубликованный рабочий API с ценами для Селигерской не обнаружен. Цены другого филиала не используются.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oldmonkey.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_1091",
+    "name": "Old School Pub — Маяковская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Оружейный переулок, 15А",
+    "website": "https://ospub24.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Адрес на Маяковской подтверждён страницей www.ospub24.ru. Основной адрес без www не ответил вовремя; встроенное меню ещё не разобрано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.ospub24.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Адрес на Маяковской подтверждён страницей www.ospub24.ru. Основной адрес без www не ответил вовремя; встроенное меню ещё не разобрано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.ospub24.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_395",
+    "name": "Post Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большая Почтовая, 28",
+    "website": "https://postpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_395_food",
+        "kind": "food",
+        "parser": "post_pdf",
+        "format": "pdf",
+        "url": "https://postpub.ru/doc/2026/KitchenMenu.pdf",
+        "min_items": 10
+      },
+      {
+        "id": "mp_395_beer",
+        "kind": "beer",
+        "parser": "post_pdf",
+        "format": "pdf",
+        "url": "https://postpub.ru/doc/2026/BEER%20POST%20PUB.pdf",
+        "min_items": 10
+      }
+    ],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике. На сайте есть предупреждение об обновлении меню и возможном отсутствии блюд.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://postpub.ru/doc/2026/KitchenMenu.pdf",
+        "source_ids": [
+          "mp_395_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://postpub.ru/doc/2026/BEER%20POST%20PUB.pdf",
+        "source_ids": [
+          "mp_395_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_4601",
+    "name": "Purkin’s Pub — Покровка",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Покровка, 43с2",
+    "website": "https://purkin.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_4601_food",
+        "kind": "food",
+        "url": "https://purkin.ru/menu/purkins-pub-pokrovka/food/",
+        "parser": "dom",
+        "sections": [
+          "Бургеры",
+          "Пицца римская",
+          "Гриль"
+        ],
+        "min_items": 3,
+        "recipe": "purkin"
+      },
+      {
+        "id": "mp_4601_beer",
+        "kind": "beer",
+        "url": "https://purkin.ru/menu/purkins-pub-pokrovka/drinks/",
+        "parser": "dom",
+        "sections": [
+          "ПИВО РАЗЛИВНОЕ"
+        ],
+        "min_items": 3,
+        "recipe": "purkin"
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://purkin.ru/menu/purkins-pub-pokrovka/food/",
+        "source_ids": [
+          "mp_4601_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://purkin.ru/menu/purkins-pub-pokrovka/drinks/",
+        "source_ids": [
+          "mp_4601_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_609",
+    "name": "Red Lion Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Садовая-Самотёчная, 13с1",
+    "website": "https://redlionpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Меню найдено в PDF. Кухня имеет несколько колонок; пивная карта превысила лимит 16 МБ при проверке. Для этих файлов пока нет проверенного разборщика.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://redlionpub.ru/menu/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Меню найдено в PDF. Кухня имеет несколько колонок; пивная карта превысила лимит 16 МБ при проверке. Для этих файлов пока нет проверенного разборщика.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://redlionpub.ru/menu/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4600",
+    "name": "Sherlock Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Арбат, 30/3с1",
+    "website": "https://sherlok-pub.ru/contacts/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальная главная страница доступна; из опубликованного меню пока нет проверенного автоматического извлечения цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://sherlok-pub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальная главная страница доступна; из опубликованного меню пока нет проверенного автоматического извлечения цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://sherlok-pub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4594",
+    "name": "Smith’s Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Таганская, 1с1",
+    "website": "https://smithspub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://smithspub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://smithspub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4603",
+    "name": "Suckin’ Diesel",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Лесная, 20с1",
+    "website": "https://suckin-diesel.clients.site/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://suckin-diesel.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://suckin-diesel.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_28",
+    "name": "Temple Bar — АРМА",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Нижний Сусальный переулок, 5с4А",
+    "website": "https://www.templebar.ru/restaurants/v-biznes-kvartale-arma",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальные разделы меню найдены, но разбор цен и проверка применимости к филиалу АРМА ещё не завершены. Нельзя считать цены подключёнными.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.templebar.ru/menju-restoranov",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальные разделы меню найдены, но разбор цен и проверка применимости к филиалу АРМА ещё не завершены. Нельзя считать цены подключёнными.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.templebar.ru/menju-restoranov",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_448",
+    "name": "The Backyard Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большой Спасоглинищевский переулок, 3с5",
+    "website": "https://backyardpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 404. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://backyardpub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 404. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://backyardpub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_1093",
+    "name": "The Speaker Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Покровка, 48",
+    "website": "https://speakerpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Полные меню связаны с документами Google Drive. На главной есть отдельные блюда с ценами, но это не полное меню. Разбор документов ещё не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://speakerpub.ru/#menu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Полные меню связаны с документами Google Drive. На главной есть отдельные блюда с ценами, но это не полное меню. Разбор документов ещё не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://speakerpub.ru/#menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_243",
+    "name": "The Tipsy Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Сущёвская, 9",
+    "website": "https://tipsypub.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_243_food",
+        "url": "https://tipsypub.ru/menu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "легендарные tipsy бургеры",
+          "горячее"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "mp_243_beer",
+        "url": "https://tipsypub.ru/menu",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "ПИВО разливное пиво",
+          "пиво и пивные напитки"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Подключены только указанные разделы официального меню. Актуальность цен — по последней проверке.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-16",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://tipsypub.ru/menu",
+        "source_ids": [
+          "mp_243_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://tipsypub.ru/menu",
+        "source_ids": [
+          "mp_243_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_4602",
+    "name": "Tweed & Stout",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, 2-я Тверская-Ямская, 6",
+    "website": "https://tweedandstout.com/home/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Найдена отдельная страница меню паба внутри сайта магазина одежды. Цены из этого меню ещё не подключены; главная страница магазина не используется как прайс.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://tweedandstout.com/pub/pub-menu/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Найдена отдельная страница меню паба внутри сайта магазина одежды. Цены из этого меню ещё не подключены; главная страница магазина не используется как прайс.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://tweedandstout.com/pub/pub-menu/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_2084",
+    "name": "VARKA — Большая Серпуховская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большая Серпуховская, 17с1",
+    "website": "https://varkarest.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница меню доступна, но в полученном текстовом слое нет карточек блюд и цен. Нужна поддержка графического/встроенного меню.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://varkarest.ru/menu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница меню доступна, но в полученном текстовом слое нет карточек блюд и цен. Нужна поддержка графического/встроенного меню.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://varkarest.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_349",
+    "name": "Victoria & Albert Pub",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Гризодубовой, 4к4",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4606",
+    "name": "Альпы",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Мясницкая, 46с1",
+    "website": "https://alpy-pab.clients.site/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://alpy-pab.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://alpy-pab.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_457",
+    "name": "Аут Паб",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Верхняя Красносельская, 8к3",
+    "website": "https://aut-pab.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://aut-pab.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://aut-pab.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4670",
+    "name": "БирХаус — проспект Мира",
+    "district": "СВАО",
+    "area": "Уточняется",
+    "address": "Москва, Проспект Мира, 124к4",
+    "website": "https://www.beerbar.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте единые тарифы 300/350 ₽ в зависимости от дня и времени, а у спецпредложений другие цены. Разбор условий действия цены и исключений ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.beerbar.ru/dishes",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте единые тарифы 300/350 ₽ в зависимости от дня и времени, а у спецпредложений другие цены. Разбор условий действия цены и исключений ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.beerbar.ru/dishes",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4671",
+    "name": "БирХаус — Тверская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Тверская, 12с7",
+    "website": "https://www.beerbar.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте единые тарифы 300/350 ₽ в зависимости от дня и времени, а у спецпредложений другие цены. Разбор условий действия цены и исключений ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.beerbar.ru/dishes",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте единые тарифы 300/350 ₽ в зависимости от дня и времени, а у спецпредложений другие цены. Разбор условий действия цены и исключений ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.beerbar.ru/dishes",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_24",
+    "name": "Бобби Дэззлер",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Костянский переулок, 7",
+    "website": "https://bdpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_24_beer",
+        "kind": "beer",
+        "url": "https://bdpub.ru/drinks/beer/",
+        "parser": "dom",
+        "sections": [],
+        "min_items": 3,
+        "recipe": "bobby_beer"
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Кухня найдена на отдельных страницах категорий, но её разбор пока не подключён. Пивная карта уже подключена.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://bdpub.ru/food/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://bdpub.ru/drinks/beer/",
+        "source_ids": [
+          "mp_24_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "mp_272",
+    "name": "Вилладж-Паб",
+    "district": "СВАО",
+    "area": "Уточняется",
+    "address": "Москва, 1-я Останкинская, 57",
+    "website": "https://www.village-pub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.village-pub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.village-pub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_1838",
+    "name": "Изи Паб — Отрадное",
+    "district": "СВАО",
+    "area": "Уточняется",
+    "address": "Москва, Алтуфьевское шоссе, 16",
+    "website": "https://easypub.ru/contacts/izi-pab-otradnoe",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Сайт публикует цены меню доставки. Их совпадение с ценами в зале этого филиала не подтверждено; для сравнения пабов они не подставляются.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://easypub.ru/menu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Сайт публикует цены меню доставки. Их совпадение с ценами в зале этого филиала не подтверждено; для сравнения пабов они не подставляются.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://easypub.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_1790",
+    "name": "Изи Паб — Ходынка",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Гризодубовой, 2",
+    "website": "https://easypub.ru/contacts/izi-pab-hodynka",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Сайт публикует цены меню доставки. Их совпадение с ценами в зале этого филиала не подтверждено; для сравнения пабов они не подставляются.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://easypub.ru/menu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Сайт публикует цены меню доставки. Их совпадение с ценами в зале этого филиала не подтверждено; для сравнения пабов они не подставляются.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://easypub.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_1794",
+    "name": "Йоркшир — Ходынка",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Гризодубовой, 4к1",
+    "website": "https://hodynka.yorkshirpub.ru/contacts/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница меню Ходынки найдена, но из её HTML не получены ценовые карточки. Динамический каталог/изображения ещё не подключены.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://hodynka.yorkshirpub.ru/menu/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница меню Ходынки найдена, но из её HTML не получены ценовые карточки. Динамический каталог/изображения ещё не подключены.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://hodynka.yorkshirpub.ru/menu/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4589",
+    "name": "Лига Пап",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большая Лубянка, 24/15с1",
+    "website": "https://liga-pap.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "mp_4589_food",
+        "kind": "food",
+        "url": "https://liga-pap.ru/menu",
+        "parser": "tilda",
+        "sections": [
+          "Бургеры",
+          "Горячие блюда"
+        ],
+        "min_items": 3,
+        "part_ids": {
+          "Бургеры": "239427641231",
+          "Горячие блюда": "436316031761"
+        }
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://liga-pap.ru/menu",
+        "source_ids": [
+          "mp_4589_food"
+        ]
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На странице есть вкладка «БАР», но проверенный адаптер пивной карты пока не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://liga-pap.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4630",
+    "name": "Мачете — Большие Каменщики",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большие Каменщики, 2",
+    "website": "https://grill-machete.ru/contacts",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Контакты подтверждают три адреса сети. Страница с меню не загрузилась по таймауту; состав, цены и единый прайс филиалов не подтверждены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://grill-machete.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Контакты подтверждают три адреса сети. Страница с меню не загрузилась по таймауту; состав, цены и единый прайс филиалов не подтверждены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://grill-machete.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4621",
+    "name": "Мачете — Новослободская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Новослободская, 24Ас2",
+    "website": "https://grill-machete.ru/contacts",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Контакты подтверждают три адреса сети. Страница с меню не загрузилась по таймауту; состав, цены и единый прайс филиалов не подтверждены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://grill-machete.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Контакты подтверждают три адреса сети. Страница с меню не загрузилась по таймауту; состав, цены и единый прайс филиалов не подтверждены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://grill-machete.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4629",
+    "name": "Мачете — Сретенка",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Сретенка, 34/1с1",
+    "website": "https://grill-machete.ru/contacts",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Контакты подтверждают три адреса сети. Страница с меню не загрузилась по таймауту; состав, цены и единый прайс филиалов не подтверждены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://grill-machete.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Контакты подтверждают три адреса сети. Страница с меню не загрузилась по таймауту; состав, цены и единый прайс филиалов не подтверждены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://grill-machete.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_289",
+    "name": "О’Коннелл’с Паб",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Покровка, 18/18с1",
+    "website": "https://oconnells.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oconnells.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oconnells.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_7695",
+    "name": "Олд Джек Паб",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Колокольников переулок, 22с5",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_6662",
+    "name": "Полнолуние",
+    "district": "СВАО",
+    "area": "Уточняется",
+    "address": "Москва, Коминтерна, 15",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscowpubs.ru/map/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_4610",
+    "name": "Русский Паб",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Тверской бульвар, 10с1",
+    "website": "https://russkij-pab.clients.site/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://russkij-pab.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://russkij-pab.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_6301",
+    "name": "Рутин Тутин",
+    "district": "СВАО",
+    "area": "Уточняется",
+    "address": "Москва, Аргуновская, 10с2",
+    "website": "https://pub-rootin-tootin.clients.site/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Сайт указывает меню по QR-коду/на кассе. В полученном HTML каталога нет позиций и цен; автоматический доступ к каталогу не настроен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://pub-rootin-tootin.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Сайт указывает меню по QR-коду/на кассе. В полученном HTML каталога нет позиций и цен; автоматический доступ к каталогу не настроен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://pub-rootin-tootin.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "mp_381",
+    "name": "Тоже Паб",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Валовая, 21",
+    "website": "https://www.tozhe.pub/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscowpubs.ru/map/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.tozhe.pub/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.tozhe.pub/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1775",
+    "name": "Черчилль Паб",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Ленинградский проспект, 66",
+    "website": "https://www.churchillspub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/cherchill-pab-1775/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.churchillspub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.churchillspub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_4250",
+    "name": "Wild Tony",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Ленинградский проспект, 47с2",
+    "website": "https://www.wildtony.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/wild-tony-4250/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.wildtony.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.wildtony.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_2762",
+    "name": "Йоркшир — Речной",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Лавочкина, 34",
+    "website": "https://lavka.yorkshirpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/yorkshir-na-rechnom-2762/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Основное меню опубликовано изображениями. Найденный bar-menu.pdf содержит вино и крепкие напитки; отдельная пивная карта не разобрана.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://lavka.yorkshirpub.ru/menu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Основное меню опубликовано изображениями. Найденный bar-menu.pdf содержит вино и крепкие напитки; отдельная пивная карта не разобрана.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://lavka.yorkshirpub.ru/menu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_28",
+    "name": "Chelsea GastroPub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Малый Гнездниковский переулок, 12/27",
+    "website": "https://www.chelsea-pub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/chelsea-gastropub-28/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальная страница разделяет основное меню и барную карту. Автоматический разбор её меню ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://chelsea-pub.ru/menyu/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальная страница разделяет основное меню и барную карту. Автоматический разбор её меню ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://chelsea-pub.ru/menyu/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1952",
+    "name": "The OldSchool Pub — Китай-город",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большой Черкасский переулок, 15",
+    "website": "https://www.ospub24.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/the-oldschool-pub-1952/",
+    "coverage": {
+      "food": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Сайт из прежнего реестра сейчас указывает Оружейный переулок, 15А. Это другой адрес, не Большой Черкасский переулок; переносить цены нельзя.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.ospub24.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Сайт из прежнего реестра сейчас указывает Оружейный переулок, 15А. Это другой адрес, не Большой Черкасский переулок; переносить цены нельзя.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.ospub24.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1679",
+    "name": "Brasserie Belge 0.33",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Садовая-Спасская, 17/2",
+    "website": "https://brasserie033.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/brasserie-belge-0-33-1679/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Официальный сайт ведёт на 033.rest. Его robots.txt запрещает автоматический сбор меню. Сборщик соблюдает запрет; меню не считается подключённым.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://033.rest/robots.txt",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Официальный сайт ведёт на 033.rest. Его robots.txt запрещает автоматический сбор меню. Сборщик соблюдает запрет; меню не считается подключённым.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://033.rest/robots.txt",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_617",
+    "name": "St. Peter’s & St. Anton Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Никитский переулок, 2",
+    "website": "https://www.realpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/st-peters-st-anton-pub-617/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 402. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.realpub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 402. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.realpub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_4252",
+    "name": "Паб 2:2",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Сретенка, 16/2",
+    "website": "https://www.22pub.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "ed_4252_food",
+        "url": "https://www.22pub.ru/",
+        "parser": "pub22",
+        "kind": "food",
+        "sections": [
+          "Горячие блюда",
+          "Бургеры и паста"
+        ],
+        "min_items": 10
+      },
+      {
+        "id": "ed_4252_beer",
+        "url": "https://www.22pub.ru/",
+        "parser": "pub22",
+        "kind": "beer",
+        "sections": [
+          "Разливное пиво",
+          "Бутылочное пиво",
+          "Пиво безалкогольное"
+        ],
+        "min_items": 15
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Проверено официальное меню. Подключены горячие блюда, бургеры/паста, разливное, бутылочное и безалкогольное пиво. Единицы объёма отсутствуют на сайте; цены по порциям сохраняются без пересчёта на 0,5 л.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://www.22pub.ru/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.22pub.ru/",
+        "source_ids": [
+          "ed_4252_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.22pub.ru/",
+        "source_ids": [
+          "ed_4252_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ed_1717",
+    "name": "Craft Republic",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Малый Гнездниковский переулок, 9/8с7",
+    "website": "https://craft-republic.clients.site/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/craft-republic-1717/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "В HTML сайта есть раздел «Каталог» и акция, но нет позиций с обычными ценами. Динамический каталог ещё не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://craft-republic.clients.site/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "В HTML сайта есть раздел «Каталог» и акция, но нет позиций с обычными ценами. Динамический каталог ещё не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://craft-republic.clients.site/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1918",
+    "name": "Dark Patrick’s Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большой Златоустинский переулок, 1с1",
+    "website": "https://www.dp-pub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/dark-patricks-pub-1918/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальный сайт ведёт в электронное меню Foodeon. Ссылка подтверждена, но адаптер этого сервиса ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.dp-pub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальный сайт ведёт в электронное меню Foodeon. Ссылка подтверждена, но адаптер этого сервиса ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.dp-pub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_899",
+    "name": "Union Jack",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Нижний Кисельный переулок, 3с1",
+    "website": "https://www.unionj.su/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/union-jack-v-nijnem-kiselnom-899/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.unionj.su/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.unionj.su/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_4388",
+    "name": "Белов",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Маросейка, 9/2с6",
+    "website": "https://www.belovbar.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/belovy-4388/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Основное меню и напитки опубликованы JPG-изображениями. Проверенное распознавание названий, порций и цен ещё не реализовано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://belovbar.ru/menyu",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Основное меню и напитки опубликованы JPG-изображениями. Проверенное распознавание названий, порций и цен ещё не реализовано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://belovbar.ru/menyu",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3586",
+    "name": "Золберг Пивной Клуб",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, 1-й Люсиновский переулок, 3Б",
+    "website": "https://www.zolberg.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "ed_3586_beer",
+        "kind": "beer",
+        "url": "https://www.zolberg.ru/menu_bar",
+        "parser": "dom",
+        "sections": [
+          "Крафтовое пиво",
+          "Пиво собственного производства \"ЗОЛБЕРГ\"",
+          "Крафтовое пиво в банках",
+          "Безалкогольное пиво"
+        ],
+        "min_items": 3,
+        "recipe": "zolberg"
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/zolberg-pivnoy-klub-3586/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Страница menu_kitchen не загрузилась по таймауту. Пивная карта работает и подключена отдельно.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.zolberg.ru/menu_kitchen",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.zolberg.ru/menu_bar",
+        "source_ids": [
+          "ed_3586_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ed_1977",
+    "name": "White Hart Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Неглинная, 10",
+    "website": "https://www.whitehart.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/uayt-hart-pab-1977/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.whitehart.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.whitehart.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3550",
+    "name": "Eric The Red",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Арбат, 36/2с1",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/eric-the-red-3550/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/eric-the-red-3550/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/eric-the-red-3550/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1445",
+    "name": "Джон Булл — Красная Пресня",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Красная Пресня, 25с1",
+    "website": "https://www.rmcom.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/djon-bull-pab-na-krasnoy-presne-1445/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1446",
+    "name": "Джон Булл — Смоленская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Карманицкий переулок, 9",
+    "website": "https://www.rmcom.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/djon-bull-pab-na-smolenke-1446/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1435",
+    "name": "William Bass",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Малая Якиманка, 9",
+    "website": "https://www.rmcom.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/vilyam-bass-1435/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3645",
+    "name": "Cross Keys Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Малая Дмитровка, 3",
+    "website": "https://www.crosskeyspub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/cross-keys-pub-3645/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальные PDF найдены. Основной файл превысил лимит 16 МБ при аудите; барный файл не загрузился по таймауту. Разбор этих PDF не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.crosskeyspub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальные PDF найдены. Основной файл превысил лимит 16 МБ при аудите; барный файл не загрузился по таймауту. Разбор этих PDF не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.crosskeyspub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1843",
+    "name": "Белфаст",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Средний Овчинниковский переулок, 1с13",
+    "website": "https://www.belfast-pub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/belfast-1843/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.belfast-pub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.belfast-pub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_2453",
+    "name": "Панч и Джуди",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Пятницкая, 6",
+    "website": "https://pjpub.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "ed_2453_food",
+        "url": "https://pjpub.ru/menu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "горячие блюда entrees",
+          "на углях on the coals",
+          "паста pasta"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "ed_2453_beer",
+        "url": "https://pjpub.ru/menu",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "БАР разливное пиво draft beer",
+          "пиво и пивные напитки bottled beer",
+          "крафт craft beer bottled"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Подключены только указанные разделы официального меню. Актуальность цен — по последней проверке.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/panch-i-djudi-na-pyatnitskoy-2453/",
+    "verified_on": "2026-11-16",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://pjpub.ru/menu",
+        "source_ids": [
+          "ed_2453_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://pjpub.ru/menu",
+        "source_ids": [
+          "ed_2453_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ed_1439",
+    "name": "Molly Gwynn’s — Добрынинская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Коровий Вал, 11",
+    "website": "https://www.rmcom.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/molli-gvinnz-na-dobryininskoy-1439/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.rmcom.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3686",
+    "name": "Sean O’Neill Irish Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Кузнецкий Мост, 11",
+    "website": "https://oneillspub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "ed_3686_food",
+        "kind": "food",
+        "url": "https://oneillspub.ru/food",
+        "parser": "dom",
+        "sections": [
+          "Бургеры",
+          "Мясо и рыба на гриле",
+          "Блюда из мяса и птицы",
+          "Блюда из рыбы и морепродуктов"
+        ],
+        "min_items": 3,
+        "recipe": "oneill"
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/sean-o-neill-irish-pub-3686/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oneillspub.ru/food",
+        "source_ids": [
+          "ed_3686_food"
+        ]
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Пивная карта — PDF без извлекаемого текста. OCR с проверкой названий, порций и цен пока не подключён.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://files.fitzgastro.ru/oneillspub/beer.pdf",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_4705",
+    "name": "Buddy McDaniel — Малая Дмитровка",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Малая Дмитровка, 20",
+    "website": "https://mcdaniel.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/buddy-mcdaniel-na-maloy-dmitrovke-4705/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница нужного филиала найдена. Разбор его меню ещё не реализован; цены других заведений McDaniel не копируются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://mcdaniel.ru/dmitrovka",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Страница нужного филиала найдена. Разбор его меню ещё не реализован; цены других заведений McDaniel не копируются.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://mcdaniel.ru/dmitrovka",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3928",
+    "name": "Jim’s Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большая Никитская, 22/2",
+    "website": "https://bjpub.ru/",
+    "format": "Паб",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "ed_3928_food",
+        "url": "https://bjpub.ru/menu",
+        "parser": "tilda",
+        "kind": "food",
+        "sections": [
+          "Горячие блюда",
+          "Стрит"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "ed_3928_beer",
+        "url": "https://bjpub.ru/menu",
+        "parser": "tilda",
+        "kind": "beer",
+        "sections": [
+          "Разливное пиво"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Подключены только указанные разделы официального меню. Актуальность цен — по последней проверке.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/big-jims-pub-3928/",
+    "verified_on": "2026-11-16",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://bjpub.ru/menu",
+        "source_ids": [
+          "ed_3928_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://bjpub.ru/menu",
+        "source_ids": [
+          "ed_3928_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ed_3578",
+    "name": "Mandy’s Apothecary Irish Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Кузнецкий Мост, 19",
+    "website": "https://mandysapothecary.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/mandys-apothecary-irish-pub-3578/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте есть разделы кухни и бара, но в текстовом HTML нет структурированного прайса. Встроенное графическое меню ещё не разобрано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://mandysapothecary.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте есть разделы кухни и бара, но в текстовом HTML нет структурированного прайса. Встроенное графическое меню ещё не разобрано.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://mandysapothecary.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3637",
+    "name": "O’Donoghue’s Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Пятницкая, 29",
+    "website": "https://odpub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "ed_3637_food",
+        "kind": "food",
+        "url": "https://odpub.ru/menu",
+        "parser": "tilda",
+        "sections": [
+          "горячие блюда",
+          "гриль меню",
+          "бургеры и хот-доги"
+        ],
+        "min_items": 3
+      },
+      {
+        "id": "ed_3637_beer",
+        "kind": "beer",
+        "url": "https://odpub.ru/menu",
+        "parser": "tilda",
+        "sections": [
+          "ПИВО разливное пиво",
+          "пиво и пивные напитки"
+        ],
+        "min_items": 3
+      }
+    ],
+    "registry_status": "Подтверждён",
+    "registry_note": "Меню опубликовано на официальном сайте; полнота категорий показана отдельно.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/o-donoghue-s-pub-3637/",
+    "verified_on": "2026-11-17",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://odpub.ru/menu",
+        "source_ids": [
+          "ed_3637_food"
+        ]
+      },
+      "beer": {
+        "state": "connected",
+        "status": "Подключено",
+        "reason": "Подключены опубликованные разделы официального меню. Последний результат и ошибки загрузки показаны в диагностике.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://odpub.ru/menu",
+        "source_ids": [
+          "ed_3637_beer"
+        ]
+      }
+    }
+  },
+  {
+    "id": "ed_2428",
+    "name": "O’Hara Irish Pub",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Фридриха Энгельса, 20",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/o-hara-irish-pub-2428/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/o-hara-irish-pub-2428/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/o-hara-irish-pub-2428/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_2524",
+    "name": "Sally O’Briens",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Большая Полянка, 1/3",
+    "website": "https://sally.pub/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/sally-obriens-2524/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальная страница выбора меню найдена. Поддержка опубликованных там файлов/изображений пока не реализована.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://sally.pub/выбор-меню/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Официальная страница выбора меню найдена. Поддержка опубликованных там файлов/изображений пока не реализована.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://sally.pub/выбор-меню/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3832",
+    "name": "16 Тонн",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Пресненский Вал, 6с1",
+    "website": "https://www.16tons.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/16-tonn-3832/",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Найдены дневное и ночное PDF-меню филиала на Пресне. Их колонки, время действия и цены пока не разобраны проверенным адаптером.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.16tons.ru/menu/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "Найдены дневное и ночное PDF-меню филиала на Пресне. Их колонки, время действия и цены пока не разобраны проверенным адаптером.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://www.16tons.ru/menu/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_3797",
+    "name": "Harat’s — Покровка",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Покровка, 6",
+    "website": "https://moscow.harats.com/pokrovka/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/harats-pub-na-pokrovke-3797/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/pokrovka/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/pokrovka/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_4106",
+    "name": "BeerMood",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Чистопрудный бульвар, 21",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/beermood-4106/",
+    "coverage": {
+      "food": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Найден barbeermood.ru, но указанный там адрес требует сверки с адресом в реестре. Сайт-визитка нужного адреса вернул Site Unavailable. Цены не привязаны к неподтверждённому филиалу.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://barbeermood.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "branch_mismatch",
+        "status": "Нужна сверка адреса/условий",
+        "reason": "Найден barbeermood.ru, но указанный там адрес требует сверки с адресом в реестре. Сайт-визитка нужного адреса вернул Site Unavailable. Цены не привязаны к неподтверждённому филиалу.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://barbeermood.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_1676",
+    "name": "Pub Boston",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Сергия Радонежского, 29-31",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/pub-boston-1676/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/pub-boston-1676/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/pub-boston-1676/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "ed_4309",
+    "name": "Stoy! Craft Bar",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Валовая, 30",
+    "website": "",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://edanyama.ru/rest/about/stoy-craft-bar-4309/",
+    "coverage": {
+      "food": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/stoy-craft-bar-4309/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "no_source",
+        "status": "Сайт не подтверждён",
+        "reason": "В проверенных источниках не подтверждён официальный сайт с меню для этого адреса. Найденные каталоги/соцсети не используются как источник цен.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://edanyama.ru/rest/about/stoy-craft-bar-4309/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "old_shoes_sokol",
+    "name": "Old Shoes Pub — Сокол",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Ленинградский проспект, 74к1",
+    "website": "https://oldshoespub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://oldshoespub.ru/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oldshoespub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При проверке официальный адрес вернул HTTP 503. Меню получить не удалось; это не подтверждает закрытие паба.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://oldshoespub.ru/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "harats_hodynka",
+    "name": "Harat’s — Ходынка",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Авиаконструктора Микояна, 12",
+    "website": "https://moscow.harats.com/hodynka/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscow.harats.com/hodynka/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/hodynka/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/hodynka/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "harats_taganka",
+    "name": "Harat’s — Таганка",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Таганская площадь, 10",
+    "website": "https://moscow.harats.com/taganka/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscow.harats.com/taganka/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/taganka/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "Вместо сайта получена заглушка Site Unavailable (HTTP 200), а не меню. Цены отсутствуют в полученном ответе.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/taganka/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "harats_novoslobodskaya",
+    "name": "Harat’s — Новослободская",
+    "district": "ЦАО",
+    "area": "Уточняется",
+    "address": "Москва, Новослободская, 24с1",
+    "website": "https://moscow.harats.com/novoslobodskaya/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://moscow.harats.com/novoslobodskaya/",
+    "coverage": {
+      "food": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/novoslobodskaya/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Источник недоступен",
+        "reason": "При загрузке сайта превышено время ожидания. Получить актуальное меню из этой среды не удалось; требуется повторная проверка.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://moscow.harats.com/novoslobodskaya/",
+        "source_ids": []
+      }
+    }
+  },
+  {
+    "id": "libertines",
+    "name": "The Libertines Pub",
+    "district": "САО",
+    "area": "Уточняется",
+    "address": "Москва, Ходынский бульвар, 20А",
+    "website": "https://thelibertinespub.ru/",
+    "format": "Кандидат: паб по каталогу",
+    "enabled": true,
+    "sources": [],
+    "registry_status": "Требует подтверждения",
+    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "discovered_on": "2026-11-16",
+    "discovery_url": "https://totadres.ru/moskva/org/the_libertines/3046348",
+    "coverage": {
+      "food": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте есть разделы еды и пива, но нет текстовых карточек цен. Разбор встроенного графического меню ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://thelibertinespub.ru/",
+        "source_ids": []
+      },
+      "beer": {
+        "state": "needs_adapter",
+        "status": "Нужна доработка",
+        "reason": "На сайте есть разделы еды и пива, но нет текстовых карточек цен. Разбор встроенного графического меню ещё не реализован.",
+        "checked_on": "2026-11-17",
+        "evidence_url": "https://thelibertinespub.ru/",
+        "source_ids": []
+      }
+    }
+  }
+]
