@@ -22,6 +22,10 @@ jobs:
         if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         continue-on-error: true
         run: python -m monitor.cli collect --only iggy_pub
+      - name: Probe additional official menus
+        if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
+        continue-on-error: true
+        run: python -m monitor.probe_sources https://chelsea-pub.ru/menyu/ https://mcdaniel.ru/pokrovka/ https://mcdaniel.ru/valovaya/ https://tweedandstout.com/pub/pub-menu/
       - name: Show latest collector log
         if: always() && github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         run: if [ -f data/monitor.log ]; then tail -n 35 data/monitor.log; fi
