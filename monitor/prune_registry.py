@@ -60,7 +60,7 @@ def save_outputs(pubs, checks, root):
     (root/"sources.json").write_text(json.dumps(kept,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (root/"archive"/"excluded_pubs.json").parent.mkdir(parents=True,exist_ok=True)
     (root/"archive"/"excluded_pubs.json").write_text(json.dumps(removed,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    (root/"price_audit_results.json").write_text(json.dumps(checks,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    (root/"price_audit_results.json").write_text(json.dumps({"results":checks},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     rows=coverage_rows(kept)
     (root/"coverage_audit.json").write_text(json.dumps(rows,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     with (root/"COVERAGE_AUDIT.csv").open("w",encoding="utf-8-sig",newline="") as f:
