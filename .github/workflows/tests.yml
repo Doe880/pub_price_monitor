@@ -18,10 +18,10 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: python -m pytest -q
-      - name: Live Iggy and Chelsea collection (network-dependent)
+      - name: Live Iggy, Chelsea and Tweed collection (network-dependent)
         if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         continue-on-error: true
-        run: python -m monitor.cli collect --only iggy_pub ed_28
+        run: python -m monitor.cli collect --only iggy_pub ed_28 mp_4602
       - name: Probe additional official menus
         if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         continue-on-error: true
