@@ -33,7 +33,8 @@ def collect(only=None, progress=None):
                         progress(index,len(sources),pub['name']+' / '+s['kind'])
                     rows = []
                     try:
-                        html = fetcher.get(s['url'], kind=s.get('format','html'))
+                        html = (fetcher.get_dynamic(s['url'], s) if s.get('format') == 'browser'
+                                else fetcher.get(s['url'], kind=s.get('format','html')))
                         rows,notes = parse(html,s,fetcher)
                         old = last_good(s['id'])
                         if len(rows) < s.get('min_items',1):
