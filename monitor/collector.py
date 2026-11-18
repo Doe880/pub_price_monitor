@@ -21,6 +21,8 @@ def collect(only=None, progress=None):
             stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'_'+uuid4().hex[:6]
             run_dir = DATA / 'snapshots' / stamp
             hosts = {urlsplit(s['url']).hostname for p in pubs for s in p['sources']}
+            hosts.update(host for p in pubs for s in p['sources']
+                         for host in s.get('browser_hosts', []) if s.get('format') == 'browser')
             fetcher = Fetcher(run_dir, hosts)
             results = []
             sources = [(p,s) for p in pubs if p.get('enabled',True) for s in p['sources']
