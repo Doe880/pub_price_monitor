@@ -51,8 +51,9 @@ def extract_text(data, source):
     kind = source.get("format", "pdf")
     if kind not in {"pdf", "image"}:
         raise TextExtractionError("Текстовое извлечение поддерживает только PDF и изображения")
-    if not isinstance(data, bytes) or len(data) > 12_000_000:
-        raise TextExtractionError("Некорректный документ или превышен лимит 12 МБ")
+    limit = 24_000_000 if kind == 'pdf' else 12_000_000
+    if not isinstance(data, bytes) or len(data) > limit:
+        raise TextExtractionError("Некорректный документ или превышен лимит размера")
     if kind == "pdf":
         if not data.startswith(b"%PDF"):
             raise TextExtractionError("Неверная сигнатура PDF")
