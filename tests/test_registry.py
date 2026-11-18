@@ -46,7 +46,7 @@ def test_removed_pubs_retained_in_separate_archive():
     assert active <= {p["id"] for p in original}
     assert active
     if (ROOT/"price_audit_results.json").exists():
-        audits=json.loads((ROOT/"price_audit_results.json").read_text(encoding="utf-8"))
+        audits=json.loads((ROOT/"price_audit_results.json").read_text(encoding="utf-8"))["results"]
         verified={r["source"] for r in audits if r["status"] in {"ok","partial"} and r["count"]>0}
         for pub in load_sources():
             assert all(s["id"] in verified for s in pub["sources"])
