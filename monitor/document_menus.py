@@ -61,7 +61,8 @@ def extract_text(data, source):
             pdf = PdfReader(BytesIO(data), strict=True)
             if not 1 <= len(pdf.pages) <= source.get("max_pages", 12):
                 raise TextExtractionError("Число страниц PDF превышает допустимое")
-            pages = [(p.extract_text(extraction_mode="layout") or "") for p in pdf.pages]
+            pages = [(p.extract_text(extraction_mode="layout") or "") if p.get("/Contents") else ""
+                     for p in pdf.pages]
         except TextExtractionError:
             raise
         except Exception as exc:
