@@ -9,10 +9,6 @@ from .models import clean
 
 
 def render_menu(url, source, fetcher):
-    try:
-        from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
-    except ImportError as exc:
-        raise RuntimeError("Браузерный режим не установлен: pip install -r requirements-browser.txt && python -m playwright install chromium") from exc
     fetcher.check_robots(url)
     selector = source.get("wait_selector")
     if not selector or not isinstance(selector, str) or len(selector) > 180:
@@ -24,6 +20,10 @@ def render_menu(url, source, fetcher):
         raise ValueError("Домены браузера должны быть объявлены в sources.json")
     if any("." not in host or host.startswith(".") for host in allowed):
         raise ValueError("Некорректный разрешённый домен")
+    try:
+        from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
+    except ImportError as exc:
+        raise RuntimeError("Браузерный режим не установлен: pip install -r requirements-browser.txt && python -m playwright install chromium") from exc
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=["--disable-dev-shm-usage"])
         try:
