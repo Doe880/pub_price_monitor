@@ -47,6 +47,11 @@ def test_added_central_pubs_have_explicit_unconnected_coverage():
             assert len(pub["sources"]) == 1
             assert pub["coverage"]["beer"]["state"] == "connected"
             assert pub["coverage"]["food"]["state"] == "unavailable"
+        elif pub_id == "krombacher_beer_kitchen":
+            assert len(pub["sources"]) == 1
+            assert pub["sources"][0]["kind"] == "food"
+            assert pub["coverage"]["food"]["state"] == "connected"
+            assert pub["coverage"]["beer"]["state"] == "needs_adapter"
         else:
             assert pub["sources"] == []
             assert all(pub["coverage"][kind]["state"] == "needs_adapter" for kind in ("food", "beer"))
