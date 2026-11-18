@@ -4,7 +4,7 @@ from monitor.parsers import tilda_parts
 
 def test_expanded_registry_unique_branch_ids_and_official_sources():
     pubs=load_sources()
-    assert 1 <= len(pubs) <= 106
+    assert len(pubs) == 23
     assert all(p['sources'] for p in pubs)
     assert len({p['id'] for p in pubs})==len(pubs)
     assert len({p['name'] for p in pubs})==len(pubs)
