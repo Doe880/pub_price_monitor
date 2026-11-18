@@ -1,7 +1,5 @@
 name: Full live price coverage audit
 on:
-  push:
-    branches: ['feature/price-filters-and-coverage-20261118']
   workflow_dispatch:
 
 jobs:
