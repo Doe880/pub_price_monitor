@@ -18,28 +18,10 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: python -m pytest -q
-      - name: Live Iggy and Krombacher collection (network-dependent)
+      - name: Live Iggy collection (network-dependent)
         if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         continue-on-error: true
-        run: python -m monitor.cli collect --only iggy_pub krombacher_beer_kitchen
-      - name: Diagnose Krombacher HTML snapshot
-        if: always() && github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          from bs4 import BeautifulSoup
-          files=list(Path('data/snapshots').glob('**/*.html'))
-          print('HTML snapshot count:',len(files))
-          for file in files:
-              html=file.read_text(encoding='utf-8', errors='replace')
-              if 'Стейки гриль' not in html and 'Кромбахер' not in html and 'Krombacher' not in html:
-                  continue
-              soup=BeautifulSoup(html,'html.parser')
-              words=[x.strip() for x in soup.stripped_strings if x.strip()]
-              print('Krombacher snapshot:',file,'text tokens:',len(words))
-              print('Heading candidates:', [w[:100] for w in words if any(a in w.lower() for a in ('стейки','горячее','мидии','денвер'))][:25])
-              print('Header tag labels:', [(x.name,x.get_text(' ',strip=True)[:80]) for x in soup.find_all(['h2','h3','h4','h5'])][:30])
-          PY
+        run: python -m monitor.cli collect --only iggy_pub
       - name: Show latest collector log
         if: always() && github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         run: if [ -f data/monitor.log ]; then tail -n 35 data/monitor.log; fi
