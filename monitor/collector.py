@@ -37,7 +37,10 @@ def collect(only=None, progress=None):
                                 else fetcher.get(s['url'], kind=s.get('format','html')))
                         rows,notes = parse(html,s,fetcher)
                         old = last_good(s['id'])
-                        if len(rows) < s.get('min_items',1):
+                        if any(n.startswith('OCR требует ручной сверки') for n in notes):
+                            status = 'review'
+                            notes.insert(0, 'OCR: снимок сохранён для проверки и не будет показан как актуальная цена')
+                        elif len(rows) < s.get('min_items',1):
                             status = 'review'
                             notes.insert(0,'Подозрительно мало позиций; данные не заменили прошлый снимок')
                         elif old and len(rows) < old['count']*0.65:
