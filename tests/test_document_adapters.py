@@ -102,7 +102,7 @@ def test_browser_host_whitelist_and_binary_response(tmp_path, monkeypatch):
             fetcher._check_url("https://pub.example:8080/menu")
         monkeypatch.setattr(fetcher, "check_robots", lambda url: None)
         monkeypatch.setattr(fetcher, "_get",
-                            lambda url: (b"\x89PNG\r\n\x1a\nDATA", "image/png", url))
+                            lambda url, **kwargs: (b"\x89PNG\r\n\x1a\nDATA", "image/png", url))
         img = fetcher.get("https://pub.example/menu.png", kind="image")
         assert img.startswith(b"\x89PNG")
         assert fetcher.files[0]["sha256"]
