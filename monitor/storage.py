@@ -153,7 +153,7 @@ def history_rows(path=DB):
     with connect(path) as c:
         return [dict(r) for r in c.execute('''SELECT o.*, c.checked_at,c.source_id,c.status,
           s.pub,s.district,s.url source_url FROM observations o JOIN checks c ON c.id=o.check_id
-          JOIN sources s ON s.id=c.source_id WHERE c.status IN ('ok','partial') ORDER BY c.id''')]
+          JOIN sources s ON s.id=c.source_id WHERE s.enabled=1 AND c.status IN ('ok','partial') ORDER BY c.id''')]
 
 
 def diagnostics(path=DB):
@@ -161,7 +161,7 @@ def diagnostics(path=DB):
         return [dict(r) for r in c.execute('''SELECT s.*,c.checked_at,c.status,c.count,c.message,
           (SELECT max(checked_at) FROM checks g WHERE g.source_id=s.id AND g.status='ok') last_success
           FROM sources s LEFT JOIN checks c ON c.id=(SELECT max(id) FROM checks WHERE source_id=s.id)
-          ORDER BY s.pub,s.id''')]
+          WHERE s.enabled=1 ORDER BY s.pub,s.id''')]
 
 
 def events(path=DB):
