@@ -43,7 +43,7 @@ if not view.empty:
         view = view[view['fresh']]
 
 summary_tab,prices_tab,history_tab,events_tab,registry_tab,sources_tab = st.tabs(
-    ['Обзор','Цены и сравнение','История','Изменения меню','Все пабы','Источники'])
+    ['Обзор','Цены и сравнение','История','Изменения меню','Пабы с ценами','Источники'])
 
 
 def table(data,key=None):
@@ -255,7 +255,7 @@ with sources_tab:
                  hide_index=True,use_container_width=True,column_config={'Сайт':st.column_config.LinkColumn()})
     st.subheader('Обновление')
     selected_ids = [p['id'] for p in pubs if p['name'] in selected_pubs and any(s.get('enabled',True) for s in p['sources'])]
-    st.caption(f'Обновятся {len(selected_ids)} выбранных заведений с подключёнными меню. Остальные адреса показаны во вкладке «Все пабы».')
+    st.caption(f'Обновятся {len(selected_ids)} выбранных заведений с подключёнными меню. Не имеющие проверенных цен заведения перенесены в архив реестра.')
     if st.button('Проверить цены сейчас',type='primary',disabled=not selected_ids):
         bar = st.progress(0,text='Подготовка…')
         try:
