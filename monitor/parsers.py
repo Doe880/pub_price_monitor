@@ -274,6 +274,9 @@ def parse_beeftime(html, source):
 
 
 def parse(html, source, fetcher):
+    if source['parser'] == 'chelsea':
+        from .chelsea import parse_chelsea
+        return parse_chelsea(html, source)
     if source['parser'] == 'krombacher':
         from .krombacher import parse_krombacher
         return parse_krombacher(html, source)
