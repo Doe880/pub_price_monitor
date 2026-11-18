@@ -2480,27 +2480,46 @@
     "website": "https://www.chelsea-pub.ru/",
     "format": "Кандидат: паб по каталогу",
     "enabled": true,
-    "sources": [],
+    "sources": [
+      {
+        "id": "chelsea_food",
+        "url": "https://chelsea-pub.ru/menyu/",
+        "parser": "chelsea",
+        "kind": "food",
+        "min_items": 10
+      },
+      {
+        "id": "chelsea_beer",
+        "url": "https://chelsea-pub.ru/menyu/",
+        "parser": "chelsea",
+        "kind": "beer",
+        "min_items": 5
+      }
+    ],
     "registry_status": "Требует подтверждения",
-    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "registry_note": "Официальное HTML-меню содержит цены; пробный парсер подключён. Проверка фактического сбора и соответствия порций производится в CI.",
     "discovered_on": "2026-11-16",
     "discovery_url": "https://edanyama.ru/rest/about/chelsea-gastropub-28/",
     "coverage": {
       "food": {
-        "state": "needs_adapter",
-        "status": "Нужна доработка",
-        "reason": "На официальной странице https://chelsea-pub.ru/menyu/ есть блюда и цены, нужен валидированный адаптер HTML с проверкой структуры, доступа и цены за 100 г.",
+        "state": "connected",
+        "status": "Подключено, нужна проверка",
+        "reason": "На официальной странице найдены именованные ценовые карточки и разработан парсер. Результат живого сбора ещё не подтверждён.",
         "checked_on": "2026-11-18",
         "evidence_url": "https://chelsea-pub.ru/menyu/",
-        "source_ids": []
+        "source_ids": [
+          "chelsea_food"
+        ]
       },
       "beer": {
-        "state": "needs_adapter",
-        "status": "Нужна доработка",
-        "reason": "Официальная страница разделяет основное меню и барную карту. Автоматический разбор её меню ещё не реализован.",
-        "checked_on": "2026-11-17",
+        "state": "connected",
+        "status": "Подключено, нужна проверка",
+        "reason": "На официальной странице найдены именованные ценовые карточки и разработан парсер. Результат живого сбора ещё не подтверждён.",
+        "checked_on": "2026-11-18",
         "evidence_url": "https://chelsea-pub.ru/menyu/",
-        "source_ids": []
+        "source_ids": [
+          "chelsea_beer"
+        ]
       }
     }
   },
