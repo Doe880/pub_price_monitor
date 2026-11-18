@@ -21,7 +21,7 @@ jobs:
       - name: Live Iggy, Chelsea food and Tweed collection (network-dependent)
         if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         continue-on-error: true
-        run: python -m monitor.cli collect --only iggy_pub ed_28 mp_4602
+        run: python -m monitor.cli collect --only iggy_pub ed_28 mp_4602 ed_3832
       - name: Show latest collector log
         if: always() && github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         run: if [ -f data/monitor.log ]; then tail -n 35 data/monitor.log; fi
