@@ -43,6 +43,11 @@ def test_added_central_pubs_have_explicit_unconnected_coverage():
     for pub_id in added:
         pub = pubs[pub_id]
         assert pub["district"] == "ЦАО"
-        assert pub["sources"] == []
-        assert all(pub["coverage"][kind]["state"] == "needs_adapter" for kind in ("food", "beer"))
+        if pub_id == "iggy_pub":
+            assert len(pub["sources"]) == 1
+            assert pub["coverage"]["beer"]["state"] == "connected"
+            assert pub["coverage"]["food"]["state"] == "unavailable"
+        else:
+            assert pub["sources"] == []
+            assert all(pub["coverage"][kind]["state"] == "needs_adapter" for kind in ("food", "beer"))
     assert "Ye Olde Shed" in pubs["mp_4603"]["registry_note"]
