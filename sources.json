@@ -1623,26 +1623,36 @@
     "website": "https://tweedandstout.com/home/",
     "format": "Кандидат: паб по каталогу",
     "enabled": true,
-    "sources": [],
+    "sources": [
+      {
+        "id": "tweed_food",
+        "url": "https://tweedandstout.com/pub/pub-menu/",
+        "parser": "tweed",
+        "kind": "food",
+        "min_items": 5
+      }
+    ],
     "registry_status": "Требует подтверждения",
     "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
     "discovered_on": "2026-11-16",
     "discovery_url": "https://moscowpubs.ru/map/",
     "coverage": {
       "food": {
-        "state": "needs_adapter",
-        "status": "Нужна доработка",
-        "reason": "Найдена отдельная страница меню паба внутри сайта магазина одежды. Цены из этого меню ещё не подключены; главная страница магазина не используется как прайс.",
-        "checked_on": "2026-11-17",
+        "state": "connected",
+        "status": "Подключено, нужна живая проверка",
+        "reason": "На официальной странице обнаружены текстовые названия блюд и цены в рублях, разработан адаптер. Фактический сбор проверяется CI.",
+        "checked_on": "2026-11-18",
         "evidence_url": "https://tweedandstout.com/pub/pub-menu/",
-        "source_ids": []
+        "source_ids": [
+          "tweed_food"
+        ]
       },
       "beer": {
         "state": "needs_adapter",
         "status": "Нужна доработка",
-        "reason": "Найдена отдельная страница меню паба внутри сайта магазина одежды. Цены из этого меню ещё не подключены; главная страница магазина не используется как прайс.",
-        "checked_on": "2026-11-17",
-        "evidence_url": "https://tweedandstout.com/pub/pub-menu/",
+        "reason": "На странице опубликована ссылка на PDF меню напитков, но разбор цен на пиво и проверка порций ещё не выполнены.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://tweedandstout.com/Menu.pdf",
         "source_ids": []
       }
     }
