@@ -3509,19 +3509,47 @@
     "website": "https://www.16tons.ru/",
     "format": "Кандидат: паб по каталогу",
     "enabled": true,
-    "sources": [],
+    "sources": [
+      {
+        "id": "sixteen_tons_night_food",
+        "url": "https://www.16tons.ru/assets/files/menu_night.pdf",
+        "kind": "food",
+        "format": "pdf",
+        "parser": "document",
+        "max_pages": 12,
+        "allow_ocr": false,
+        "min_items": 4,
+        "sections": [
+          "Горячие блюда"
+        ],
+        "stop_sections": [
+          "Дополнительные гарниры",
+          "Десерты",
+          "Салаты",
+          "Холодные закуски",
+          "Горячие закуски",
+          "Пицца и паста",
+          "Коктейли",
+          "Супы",
+          "Пиво",
+          "Безалкогольные напитки"
+        ]
+      }
+    ],
     "registry_status": "Требует подтверждения",
-    "registry_note": "Формат, адрес и работа заведения требуют проверки. Автоматический сбор цен не подключён.",
+    "registry_note": "Ночные цены: источник menu_night.pdf официального сайта; применимость к дневным часам не гарантируется.",
     "discovered_on": "2026-11-16",
     "discovery_url": "https://edanyama.ru/rest/about/16-tonn-3832/",
     "coverage": {
       "food": {
-        "state": "needs_adapter",
-        "status": "Нужна доработка",
-        "reason": "Найдены дневное и ночное PDF-меню филиала на Пресне. Их колонки, время действия и цены пока не разобраны проверенным адаптером.",
-        "checked_on": "2026-11-17",
-        "evidence_url": "https://www.16tons.ru/menu/",
-        "source_ids": []
+        "state": "connected",
+        "status": "Проверяется PDF-меню",
+        "reason": "Ночное меню 2026 для адреса на Пресне найдено на официальном сайте; подлежит живому парсингу, статус ещё не подтверждён.",
+        "checked_on": "2026-11-18",
+        "evidence_url": "https://www.16tons.ru/assets/files/menu_night.pdf",
+        "source_ids": [
+          "sixteen_tons_night_food"
+        ]
       },
       "beer": {
         "state": "needs_adapter",
