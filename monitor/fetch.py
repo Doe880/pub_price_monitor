@@ -109,8 +109,8 @@ class Fetcher:
                 raise ValueError('Вместо PDF получен другой формат')
             value = b
         elif kind == 'image':
-            if not (b.startswith(b'\\x89PNG\\r\\n\\x1a\\n') or
-                    b.startswith(b'\\xff\\xd8\\xff') or
+            if not (b.startswith(b'\x89PNG\r\n\x1a\n') or
+                    b.startswith(b'\xff\xd8\xff') or
                     (b.startswith(b'RIFF') and b[8:12] == b'WEBP')):
                 raise ValueError('Вместо PNG/JPEG/WebP получен другой формат')
             value = b
