@@ -1,4 +1,6 @@
 import os
+import json
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -31,12 +33,15 @@ with st.sidebar:
     cats = st.multiselect('Категории',['Горячие блюда','Пиво'],default=['Горячие блюда','Пиво'])
     search = st.text_input('Поиск по названию')
     fresh_only = st.checkbox('Только свежие успешные проверки',value=False)
+    channels = st.multiselect('Тип прайса', ['В заведении','Доставка сети'], default=['В заведении','Доставка сети'])
     st.caption('Реестр найденных адресов не гарантирует полный охват всех действующих пабов. Подтверждение адреса и подключение цен показаны отдельно.')
     st.caption('Настройка списка: sources.json. Обновление: вкладка «Источники».')
 
 view = df.copy()
 if not view.empty:
     view = view[view['district'].isin(districts)&view['pub'].isin(selected_pubs)&view['category'].isin(cats)]
+    channel_filter = ['venue' if x == 'В заведении' else 'delivery' for x in channels]
+    view = view[view['price_channel'].fillna('venue').isin(channel_filter)]
     if search:
         view = view[view['name'].str.contains(search,case=False,regex=False,na=False)]
     if fresh_only:
@@ -54,7 +59,7 @@ def table(data,key=None):
              'portion':'Порция','volume_ml':'Объём, мл','price_500ml':'Расчёт за 0,5 л, ₽',
              'price_basis':'Цена за','serving_type':'Подача','alcohol_free':'Без алкоголя',
              'change_rub':'Изменение, ₽','change_pct':'Изменение, %','previous_price':'Предыдущая цена, ₽',
-             'freshness':'Проверка','checked_msk':'Проверено, МСК','source_url':'Официальное меню',
+             'price_channel':'Тип прайса','freshness':'Проверка','checked_msk':'Проверено, МСК','source_url':'Официальное меню',
              'old_price':'Было, ₽','new_price':'Стало, ₽','event':'Событие','checked_at':'Дата UTC'}
     st.dataframe(data.rename(columns=names),use_container_width=True,hide_index=True,
                  column_config={'Официальное меню':st.column_config.LinkColumn('Официальное меню',display_text='Открыть')},key=key)
@@ -84,9 +89,10 @@ with summary_tab:
         b.metric('Позиций с порциями',len(view))
         c.metric('Свежих цен',len(fresh))
         d.metric('Требуют проверки',len(view)-len(fresh))
-        st.markdown(describe(view))
+        venue_view = view[view['price_channel'].fillna('venue') == 'venue']
+        st.markdown(describe(venue_view) if not venue_view.empty else 'В выборке только цены доставки; сравнение с ценами зала отключено.')
         st.caption('Каждый объём пива считается отдельной позицией. Свежесть — успешная проверка не старше '+os.getenv('STALE_HOURS','48')+' часов.')
-        chart = fresh.groupby(['pub','category'],as_index=False).size().rename(columns={'size':'count'})
+        chart = fresh[fresh['price_channel'].fillna('venue') == 'venue'].groupby(['pub','category'],as_index=False).size().rename(columns={'size':'count'})
         if not chart.empty:
             fig = px.bar(chart,x='pub',y='count',color='category',barmode='group',
                          color_discrete_map={'Горячие блюда':'#b97638','Пиво':'#285c4a'},
@@ -110,6 +116,31 @@ with summary_tab:
             st.markdown(st.session_state['ai_result'])
 
 with prices_tab:
+    if ('ИЗИ ПАБ — Ходынка (доставка сети)' in selected_pubs
+            and 'САО' in districts and 'Горячие блюда' in cats
+            and 'Доставка сети' in channels):
+        reference_path = Path(__file__).resolve().parent / 'reference_prices' / 'easypub_delivery_2026-11-19.json'
+        if reference_path.exists():
+            with reference_path.open(encoding='utf-8') as reference_file:
+                reference = json.load(reference_file)
+            reference_rows = pd.DataFrame(reference['items'])
+            reference_rows = reference_rows.rename(columns={
+                'section':'Раздел', 'name':'Позиция', 'portion':'Порция',
+                'price_rub':'Цена доставки, ₽'})
+            if search:
+                reference_rows = reference_rows[reference_rows['Позиция'].str.contains(
+                    search, case=False, regex=False, na=False)]
+            with st.expander('ИЗИ ПАБ — справочный прайс доставки сети', expanded=True):
+                st.warning('Это цены из индексированной версии официального каталога доставки, '
+                           'а не подтверждённые актуальные цены зала на Ходынке. '
+                           'Автоматический сбор пока не прошёл живую проверку.')
+                st.caption('Источник: ' + reference['source_url'] +
+                           ' · проверка индексированной версии: ' + reference['observation_date'] +
+                           ' · дата обновления меню не указана')
+                st.dataframe(reference_rows, use_container_width=True, hide_index=True)
+                st.download_button('Скачать справочные цены Easy Pub CSV',
+                                   csv_bytes(reference_rows), 'easypub_delivery_reference.csv',
+                                   'text/csv')
     if view.empty:
         st.info('Нет данных для выбранных фильтров.')
     else:
@@ -136,15 +167,19 @@ with prices_tab:
         if filtered.empty:
             st.info('По выбранным пабам, позициям и порциям цен не найдено.')
         else:
-            cols = ['pub','district','name','category','subcategory','portion','price_basis','serving_type',
+            filtered['price_channel'] = filtered['price_channel'].map({'venue':'В заведении','delivery':'Доставка сети'})
+            cols = ['pub','district','price_channel','name','category','subcategory','portion','price_basis','serving_type',
                     'alcohol_free','price','price_500ml','note','change_rub','change_pct','checked_msk','freshness','source_url']
             table(filtered[cols], key='prices')
             st.download_button('Скачать таблицу CSV', csv_bytes(filtered[cols]),
                                'pub_prices.csv', 'text/csv')
+            if (filtered['price_channel'] == 'Доставка сети').any():
+                st.warning('Цены доставки сети Easy Pub не являются ценами зала. Они показаны в таблице, но не участвуют в сравнительных графиках пабов.')
             st.caption('Пересчёт на 0,5 л нужен для сравнения. Паб может не продавать такую порцию. '
                        '«В меню» не подтверждает наличие сегодня.')
             st.subheader('Сравнение пива')
-            beer = comparable_beer(filtered)
+            venue_prices = filtered[filtered['price_channel'] == 'В заведении']
+            beer = comparable_beer(venue_prices)
             if not beer.empty:
                 left, right = st.columns(2)
                 serving = left.selectbox('Тип подачи', sorted(beer['serving_type'].unique()))
@@ -167,7 +202,7 @@ with prices_tab:
                     fig.update_layout(showlegend=False, font_size=15)
                     st.plotly_chart(fig, use_container_width=True)
             st.subheader('Сравнение горячих блюд')
-            food = filtered[(filtered['category'] == 'Горячие блюда') & filtered['fresh']]
+            food = venue_prices[(venue_prices['category'] == 'Горячие блюда') & venue_prices['fresh']]
             if not food.empty:
                 basis = st.radio('Единица цены', ['порция','100 г'], horizontal=True)
                 food = food[food['price_basis'] == basis]
@@ -209,7 +244,7 @@ with history_tab:
                           labels={'time':'Проверено, МСК','price':'Цена, ₽'},title=labels[chosen])
             fig.update_traces(line_color='#285c4a')
             st.plotly_chart(fig,use_container_width=True)
-            table(h[['pub','name','portion','price','checked_at','status','source_url']])
+            table(h[['pub','name','portion','price','price_channel','checked_at','status','source_url']])
             st.download_button('Скачать историю CSV',csv_bytes(h.drop(columns='time')),'price_history.csv','text/csv')
             with st.expander('Текст из меню и подтверждение'):
                 st.text(h.iloc[-1]['evidence'])
@@ -249,7 +284,7 @@ with registry_tab:
 
 with sources_tab:
     st.subheader('Официальные источники')
-    st.caption('Цены берутся из официальных HTML-меню, публичных каталогов меню и поддержанных PDF. Агрегаторы и поисковые сниппеты не используются. Для каждого неподключённого раздела есть причина во вкладке «Все пабы».')
+    st.caption('Цены берутся из официальных HTML-меню, публичных каталогов меню и поддержанных PDF. Агрегаторы и поисковые сниппеты не используются. Для каждого неподключённого раздела есть причина во вкладке «Пабы с ценами».')
     registry = pd.DataFrame([{k:p[k] for k in ['name','district','area','address','website','format']} for p in pubs])
     st.dataframe(registry.rename(columns={'name':'Паб','district':'Округ','area':'Район','address':'Адрес','website':'Сайт','format':'Формат'}),
                  hide_index=True,use_container_width=True,column_config={'Сайт':st.column_config.LinkColumn()})

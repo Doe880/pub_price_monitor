@@ -4,19 +4,31 @@
   "python": "3.10",
   "audit_run": "https://github.com/Doe880/pub_price_monitor/actions/runs/44323594034",
   "previous_pubs": 106,
-  "active_pubs": 23,
+  "active_pubs": 24,
   "archived_excluded_pubs": 83,
   "configured_price_sources": 37,
-  "checks": 39,
+  "checks": 40,
   "check_status_totals": {
     "ok": 33,
     "partial": 4,
-    "error": 2
+    "error": 3
   },
-  "coverage_rows": 46,
+  "coverage_rows": 48,
   "exclusion_policy": "Keep pub only if a live source returns count > 0 and status ok or partial",
   "limitations": "Partial status does not guarantee full menu; excluded pubs are not necessarily closed; no OCR rows without manual approval",
   "source_details_file": "price_audit_results.json",
   "removed_pubs_file": "archive/excluded_pubs.json",
-  "original_registry_file": "archive/pubs_before_price_cleanup_2026-11-18.json"
+  "original_registry_file": "archive/pubs_before_price_cleanup_2026-11-18.json",
+  "verified_pubs": 23,
+  "reference_only_pubs": 1,
+  "price_sources_verified": 37,
+  "additional_source": {
+    "id": "easy_pub_delivery_food",
+    "name": "Easy Pub Khodynka",
+    "status": "disabled",
+    "live_verification": "error 404 or HTTPS to HTTP redirect",
+    "reference_hot_food_prices": 20,
+    "reference_beer_prices": 0,
+    "disclaimer": "network delivery prices, not in-venue prices"
+  }
 }

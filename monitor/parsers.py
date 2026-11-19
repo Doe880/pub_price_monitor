@@ -274,6 +274,9 @@ def parse_beeftime(html, source):
 
 
 def parse(html, source, fetcher):
+    if source['parser'] == 'easypub':
+        from .easypub import parse_easypub
+        return parse_easypub(html, source)
     if source['parser'] == 'document':
         from .document_menus import parse_document
         return parse_document(html, source)
