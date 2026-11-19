@@ -58,3 +58,16 @@ def test_easy_pub_price_channel_in_storage(tmp_path):
     storage.sync_sources([p], db)
     with storage.connect(db) as c:
         assert c.execute("SELECT count(*) FROM sources WHERE price_channel='delivery'").fetchone()[0]==1
+
+
+def test_reference_prices_are_flagged_and_not_live_collector_data():
+    import json
+    from monitor.config import ROOT, load_sources
+    reference=json.loads((ROOT/"reference_prices"/"easypub_delivery_2026-11-19.json").read_text(encoding="utf-8"))
+    assert reference["source_channel"]=="delivery"
+    assert reference["live_collector_verified"] is False
+    assert len(reference["items"])==20
+    assert all(item["price_rub"]>=30 and item["section"] for item in reference["items"])
+    easy=next(p for p in load_sources() if p["id"]=="easy_pub_khodynka")
+    assert all(not s.get("enabled",True) for s in easy["sources"])
+    assert easy["coverage"]["beer"]["state"]=="unavailable"
