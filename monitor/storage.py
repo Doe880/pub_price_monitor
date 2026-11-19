@@ -46,6 +46,10 @@ def init(path=DB):
         CREATE INDEX IF NOT EXISTS idx_checks_source ON checks(source_id,id);
         CREATE INDEX IF NOT EXISTS idx_obs_key ON observations(item_key,check_id);
         ''')
+        columns = {x[1] for x in c.execute("PRAGMA table_info(sources)")}
+        if "price_channel" not in columns:
+            c.execute("ALTER TABLE sources ADD COLUMN price_channel TEXT NOT NULL DEFAULT 'venue'")
+        c.execute("UPDATE sources SET price_channel='venue' WHERE price_channel IS NULL")
 
 
 def sync_sources(pubs, path=DB):
@@ -54,12 +58,15 @@ def sync_sources(pubs, path=DB):
         c.execute('UPDATE sources SET enabled=0')
         for pub in pubs:
             for s in pub['sources']:
-                c.execute('''INSERT INTO sources VALUES(?,?,?,?,?,?,?,?)
+                c.execute('''INSERT INTO sources
+                  (id,pub_id,pub,district,area,address,url,enabled,price_channel)
+                  VALUES(?,?,?,?,?,?,?,?,?)
                   ON CONFLICT(id) DO UPDATE SET pub_id=excluded.pub_id,pub=excluded.pub,
                   district=excluded.district,area=excluded.area,address=excluded.address,
-                  url=excluded.url,enabled=excluded.enabled''',
+                  url=excluded.url,enabled=excluded.enabled,price_channel=excluded.price_channel''',
                   (s['id'],pub['id'],pub['name'],pub['district'],pub['area'],pub['address'],
-                   s['url'],int(pub.get('enabled', True) and s.get('enabled',True))))
+                   s['url'],int(pub.get('enabled', True) and s.get('enabled',True)),
+                   s.get('price_channel','venue')))
 
 
 def save_check(source_id, status, items, message='', raw_path='', checked_at=None, path=DB):
@@ -138,6 +145,7 @@ def current_rows(path=DB):
                 d = dict(r)
                 d.update(pub=s['pub'], pub_id=s['pub_id'], district=s['district'], area=s['area'],
                          address=s['address'], source_id=s['id'], source_url=s['url'],
+                         price_channel=s['price_channel'],
                          checked_at=selected['checked_at'], last_attempt=latest['checked_at'],
                          source_status=latest['status'], snapshot_status=selected['status'],
                          raw_path=selected['raw_path'], previous_price=old.get(r['item_key']))
@@ -152,7 +160,7 @@ def current_rows(path=DB):
 def history_rows(path=DB):
     with connect(path) as c:
         return [dict(r) for r in c.execute('''SELECT o.*, c.checked_at,c.source_id,c.status,
-          s.pub,s.district,s.url source_url FROM observations o JOIN checks c ON c.id=o.check_id
+          s.pub,s.district,s.url source_url,s.price_channel FROM observations o JOIN checks c ON c.id=o.check_id
           JOIN sources s ON s.id=c.source_id WHERE s.enabled=1 AND c.status IN ('ok','partial') ORDER BY c.id''')]
 
 
@@ -180,6 +188,7 @@ def events(path=DB):
                             item = b or a
                             out.append(dict(pub=s['pub'],district=s['district'],source_id=s['id'],
                                 checked_at=check['checked_at'],event=change,name=item['name'],
+                                price_channel=s['price_channel'],
                                 category=item['category'],portion=item['portion'],item_key=key,
                                 old_price=a['price'] if a else None,new_price=b['price'] if b else None,
                                 source_url=s['url']))
