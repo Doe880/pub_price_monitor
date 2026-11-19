@@ -1279,5 +1279,48 @@
         ]
       }
     }
+  },
+  {
+    "id": "easy_pub_khodynka",
+    "name": "ИЗИ ПАБ — Ходынка (доставка сети)",
+    "district": "САО",
+    "area": "Хорошёвский",
+    "address": "Москва, улица Гризодубовой, 2",
+    "website": "https://easypub.ru/",
+    "format": "Паб сети; опубликованы цены доставки, не цены зала",
+    "enabled": true,
+    "sources": [
+      {
+        "id": "easy_pub_delivery_food",
+        "kind": "food",
+        "url": "https://easypub.ru/menu/goryachie-blyuda",
+        "parser": "easypub",
+        "price_channel": "delivery",
+        "min_items": 10
+      }
+    ],
+    "registry_status": "Требуется живая проверка источника",
+    "registry_note": "Источник: официальный каталог доставки всей сети Easy Pub, НЕ подтверждённые цены в зале филиала на Ходынке. Прайс пива в официальном каталоге не найден.",
+    "discovery_url": "https://easypub.ru/contacts",
+    "coverage": {
+      "food": {
+        "state": "connected",
+        "status": "Проверяется сбор доставки",
+        "reason": "Официальная страница горячих блюд с ценами доставки. Требуется живая проверка парсера и подтверждение структуры.",
+        "checked_on": "2026-11-19",
+        "evidence_url": "https://easypub.ru/menu/goryachie-blyuda",
+        "source_ids": [
+          "easy_pub_delivery_food"
+        ]
+      },
+      "beer": {
+        "state": "unavailable",
+        "status": "Нет подтверждённых цен на пиво",
+        "reason": "В официальном онлайн-меню доставки нет прайса разливного или бутылочного пива с ценой и объёмом. Цены зала не приписываются.",
+        "checked_on": "2026-11-19",
+        "evidence_url": "https://easypub.ru/menu/napitki",
+        "source_ids": []
+      }
+    }
   }
 ]
