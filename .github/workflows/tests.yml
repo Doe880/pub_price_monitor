@@ -1,7 +1,7 @@
 name: Python tests
 on:
   push:
-    branches: [master, add-central-moscow-pubs-2026-11]
+    branches: [master, 'feature/price-filters-and-coverage-20261118']
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -18,10 +18,11 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: python -m pytest -q
-      - name: Live Iggy Pub collection (network-dependent)
-        if: github.ref == 'refs/heads/add-central-moscow-pubs-2026-11'
+      - name: Live Iggy, Chelsea food and Tweed collection (network-dependent)
+        if: github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         continue-on-error: true
-        run: python -m monitor.cli collect --only iggy_pub
+        run: python -m monitor.cli collect --only iggy_pub ed_28 mp_4602 ed_3832
       - name: Show latest collector log
-        if: always() && github.ref == 'refs/heads/add-central-moscow-pubs-2026-11'
+        if: always() && github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         run: if [ -f data/monitor.log ]; then tail -n 35 data/monitor.log; fi
+

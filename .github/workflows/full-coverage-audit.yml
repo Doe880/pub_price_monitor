@@ -1,0 +1,58 @@
+name: Full live price coverage audit
+on:
+  workflow_dispatch:
+
+jobs:
+  live-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - shard: 1
+            pub_ids: "dubliner mp_4652 mp_284 mp_243 ed_28 ed_3686"
+          - shard: 2
+            pub_ids: "tap_barrel mp_26 mp_4591 mp_4602 ed_4252 ed_3928"
+          - shard: 3
+            pub_ids: "delirium mp_27 mp_395 mp_24 ed_3586 ed_3637"
+          - shard: 4
+            pub_ids: "beeftime mp_23 mp_4601 mp_4589 ed_2453 iggy_pub"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install -r requirements.txt
+      - name: Collect official menu prices for shard
+        shell: bash
+        run: |
+          set +e
+          python -m monitor.cli collect --only ${{ matrix.pub_ids }} > /tmp/pub-audit.log 2>&1
+          exit_code=$?
+          cat /tmp/pub-audit.log
+          echo "collector_exit_code=$exit_code"
+          exit 0
+      - name: Summarize verifiable observed prices
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          snapshots=sorted(Path('data/snapshots').glob('*/run.json'))
+          if not snapshots:
+              raise SystemExit('No run.json found - audit failed')
+          data=json.loads(snapshots[-1].read_text(encoding='utf-8'))
+          for r in data:
+              print('AUDIT_RESULT ' + json.dumps({k:r.get(k) for k in ['source','pub','status','count','message']},ensure_ascii=False))
+          with_prices=sorted({r['pub'] for r in data if r['count']>0 and r['status'] in ('ok','partial')})
+          print('AUDIT_WITH_PRICES '+json.dumps(with_prices,ensure_ascii=False))
+          PY
+      - name: Upload machine-readable audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: price-audit-shard-${{ matrix.shard }}
+          path: |
+            data/snapshots/**/run.json
+            data/monitor.log
+          retention-days: 14

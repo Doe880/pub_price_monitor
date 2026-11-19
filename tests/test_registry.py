@@ -4,11 +4,12 @@ from monitor.parsers import tilda_parts
 
 def test_expanded_registry_unique_branch_ids_and_official_sources():
     pubs=load_sources()
-    assert len(pubs)==106
+    assert len(pubs) == 23
+    assert all(p['sources'] for p in pubs)
     assert len({p['id'] for p in pubs})==len(pubs)
     assert len({p['name'] for p in pubs})==len(pubs)
-    assert {p['district'] for p in pubs}=={'ЦАО','САО','СВАО'}
-    assert sum(bool(p['sources']) for p in pubs) >= 21
+    assert {p['district'] for p in pubs} <= {'ЦАО','САО','СВАО'}
+    assert sum(bool(p['sources']) for p in pubs) == len(pubs)
     for p in pubs:
         for s in p['sources']:
             assert s['url'].startswith('https://')
@@ -36,18 +37,16 @@ def test_invalid_official_edition_volume_is_not_corrected_by_guess():
     rows[0].validate()
 
 
-def test_added_central_pubs_have_explicit_unconnected_coverage():
-    pubs = {p["id"]: p for p in load_sources()}
-    added = {"connolly_station", "trappist_moscow", "iggy_pub", "na_kranah", "beer_brut", "krombacher_beer_kitchen"}
-    assert added <= pubs.keys()
-    for pub_id in added:
-        pub = pubs[pub_id]
-        assert pub["district"] == "ЦАО"
-        if pub_id == "iggy_pub":
-            assert len(pub["sources"]) == 1
-            assert pub["coverage"]["beer"]["state"] == "connected"
-            assert pub["coverage"]["food"]["state"] == "unavailable"
-        else:
-            assert pub["sources"] == []
-            assert all(pub["coverage"][kind]["state"] == "needs_adapter" for kind in ("food", "beer"))
-    assert "Ye Olde Shed" in pubs["mp_4603"]["registry_note"]
+def test_removed_pubs_retained_in_separate_archive():
+    import json
+    from monitor.config import ROOT
+    active={p["id"] for p in load_sources()}
+    original=json.loads((ROOT/"archive"/"pubs_before_price_cleanup_2026-11-18.json").read_text(encoding="utf-8"))["pubs"]
+    assert len(original)==106
+    assert active <= {p["id"] for p in original}
+    assert active
+    if (ROOT/"price_audit_results.json").exists():
+        audits=json.loads((ROOT/"price_audit_results.json").read_text(encoding="utf-8"))["results"]
+        verified={r["source"] for r in audits if r["status"] in {"ok","partial"} and r["count"]>0}
+        for pub in load_sources():
+            assert all(s["id"] in verified for s in pub["sources"])

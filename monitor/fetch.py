@@ -32,10 +32,10 @@ class Fetcher:
 
     def _check_url(self, url):
         p = urlsplit(url)
-        if p.scheme != 'https' or p.hostname not in self.hosts or p.username or p.port not in {None, 443}:
+        if p.scheme != 'https' or p.hostname not in self.hosts or p.username or p.password or p.port not in {None, 443}:
             raise ValueError('URL вне разрешённых официальных источников: ' + url)
 
-    def _get(self, url):
+    def _get(self, url, max_bytes=12_000_000):
         for _ in range(5):
             self._check_url(url)
             host = urlsplit(url).hostname
@@ -55,15 +55,14 @@ class Fetcher:
                 total = 0
                 for chunk in r.iter_content(65536):
                     total += len(chunk)
-                    if total > 12_000_000:
+                    if total > max_bytes:
                         raise ValueError('Ответ больше 12 МБ')
                     chunks.append(chunk)
                 return b''.join(chunks), r.headers.get('Content-Type', ''), url
         raise ValueError('Слишком много перенаправлений')
 
-    def get(self, url, kind='html'):
-        if url in self.cache:
-            return self.cache[url]
+    def check_robots(self, url):
+        """Fail closed if the robots rules for the requested host cannot be checked."""
         self._check_url(url)
         host = urlsplit(url).hostname
         if host not in self.robots:
@@ -77,19 +76,44 @@ class Fetcher:
                     raise RuntimeError('Не удалось проверить robots.txt') from e
                 rp = RobotFileParser()
                 rp.parse([])
+            except (requests.RequestException, ValueError, UnicodeError) as exc:
+                raise RuntimeError('Не удалось проверить robots.txt') from exc
             self.robots[host] = (rp, rp.crawl_delay(self.USER_AGENT) or rp.crawl_delay('*') or 0)
         if not self.robots[host][0].can_fetch(self.USER_AGENT, url):
             raise RuntimeError('Сбор запрещён robots.txt: ' + url)
-        b, ct, final_url = self._get(url)
-        # Redirect targets must obey their robots rules too. Cross-host redirects
-        # are rejected so approval of one site never authorizes another website.
+
+    def save_artifact(self, url, data, kind):
+        limit = 24_000_000 if kind == 'pdf' else 12_000_000
+        if len(data) > limit:
+            raise ValueError('Размер файла превышает допустимый лимит')
+        digest = hashlib.sha256(data).hexdigest()
+        filename = hashlib.sha256((url + ':' + kind).encode()).hexdigest()[:14] + '.' + kind
+        path = self.directory / filename
+        path.write_bytes(data)
+        self.files.append({'url': url, 'path': filename, 'sha256': digest,
+                           'content_type': kind})
+        (self.directory / 'manifest.json').write_text(
+            json.dumps(self.files, ensure_ascii=False, indent=2), encoding='utf-8')
+        return data
+
+    def get(self, url, kind='html'):
+        if url in self.cache:
+            return self.cache[url]
+        self.check_robots(url)
+        host = urlsplit(url).hostname
+        b, ct, final_url = self._get(url, max_bytes=24_000_000 if kind == 'pdf' else 12_000_000)
         if urlsplit(final_url).hostname != host:
             raise RuntimeError('Источник перенаправил на другой домен; проверьте конфигурацию')
-        if not self.robots[host][0].can_fetch(self.USER_AGENT, final_url):
-            raise RuntimeError('robots.txt запрещает конечный URL')
+        self.check_robots(final_url)
         if kind == 'pdf':
             if not b.startswith(b'%PDF'):
                 raise ValueError('Вместо PDF получен другой формат')
+            value = b
+        elif kind == 'image':
+            if not (b.startswith(b'\x89PNG\r\n\x1a\n') or
+                    b.startswith(b'\xff\xd8\xff') or
+                    (b.startswith(b'RIFF') and b[8:12] == b'WEBP')):
+                raise ValueError('Вместо PNG/JPEG/WebP получен другой формат')
             value = b
         elif kind == 'json':
             value = json.loads(b.decode('utf-8-sig'))
@@ -97,16 +121,13 @@ class Fetcher:
             value = b.decode('utf-8-sig', errors='replace')
             if '<html' not in value.lower() and '<!doctype' not in value.lower():
                 raise ValueError('Вместо HTML получен другой формат')
-        digest = hashlib.sha256(b).hexdigest()
-        filename = hashlib.sha256(url.encode()).hexdigest()[:14] + '.' + kind
-        path = self.directory / filename
-        path.write_bytes(b)
-        self.files.append({'url':url, 'final_url':final_url, 'path':str(path.name),
-                           'sha256':digest, 'content_type':ct})
-        (self.directory / 'manifest.json').write_text(
-            json.dumps(self.files, ensure_ascii=False, indent=2), encoding='utf-8')
+        self.save_artifact(url, b, kind)
         self.cache[url] = value
         return value
+
+    def get_dynamic(self, url, source):
+        from .browser_menus import render_menu
+        return render_menu(url, source, self)
 
     def close(self):
         self.session.close()

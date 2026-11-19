@@ -81,6 +81,43 @@ def last_good(source_id, path=DB):
         return dict(row) if row else None
 
 
+
+def review_check(check_id, path=DB):
+    """Read a quarantined OCR check and its evidence without approving anything."""
+    with connect(path) as c:
+        check = c.execute('SELECT * FROM checks WHERE id=?', (check_id,)).fetchone()
+        if not check:
+            raise ValueError('Проверка не найдена')
+        rows = [dict(r) for r in c.execute(
+            'SELECT name,category,portion,price,evidence FROM observations WHERE check_id=? '
+            'ORDER BY name,portion', (check_id,))]
+        return dict(check), rows
+
+
+def approve_ocr_check(check_id, approver, path=DB):
+    """Explicit user validation is required; all decisions are audit logged."""
+    approver = str(approver).strip()
+    if not 2 <= len(approver) <= 100:
+        raise ValueError('Укажите проверяющего (2–100 символов)')
+    with connect(path) as c:
+        c.execute('''CREATE TABLE IF NOT EXISTS approvals (
+          check_id INTEGER PRIMARY KEY REFERENCES checks(id),
+          approved_at TEXT NOT NULL, approved_by TEXT NOT NULL,
+          original_status TEXT NOT NULL)''')
+        check = c.execute('SELECT * FROM checks WHERE id=?', (check_id,)).fetchone()
+        if not check:
+            raise ValueError('Проверка не найдена')
+        if check['status'] != 'review' or 'OCR требует ручной сверки' not in check['message']:
+            raise ValueError('Подтверждение допускается только для OCR-проверок со статусом review')
+        if check['count'] <= 0:
+            raise ValueError('В OCR-проверке нет позиций')
+        c.execute("INSERT INTO approvals VALUES (?, ?, ?, ?)",
+                  (check_id, now(), approver, check['status']))
+        c.execute("UPDATE checks SET status='ok', message=message||? WHERE id=?",
+                  ('\\nПроверено вручную: '+approver, check_id))
+        return check_id
+
+
 def selected_check(c, source_id):
     # A partially parsed source cannot silently replace a complete historical menu.
     row = c.execute("SELECT * FROM checks WHERE source_id=? AND status='ok' ORDER BY id DESC LIMIT 1",(source_id,)).fetchone()
@@ -116,7 +153,7 @@ def history_rows(path=DB):
     with connect(path) as c:
         return [dict(r) for r in c.execute('''SELECT o.*, c.checked_at,c.source_id,c.status,
           s.pub,s.district,s.url source_url FROM observations o JOIN checks c ON c.id=o.check_id
-          JOIN sources s ON s.id=c.source_id WHERE c.status IN ('ok','partial') ORDER BY c.id''')]
+          JOIN sources s ON s.id=c.source_id WHERE s.enabled=1 AND c.status IN ('ok','partial') ORDER BY c.id''')]
 
 
 def diagnostics(path=DB):
@@ -124,7 +161,7 @@ def diagnostics(path=DB):
         return [dict(r) for r in c.execute('''SELECT s.*,c.checked_at,c.status,c.count,c.message,
           (SELECT max(checked_at) FROM checks g WHERE g.source_id=s.id AND g.status='ok') last_success
           FROM sources s LEFT JOIN checks c ON c.id=(SELECT max(id) FROM checks WHERE source_id=s.id)
-          ORDER BY s.pub,s.id''')]
+          WHERE s.enabled=1 ORDER BY s.pub,s.id''')]
 
 
 def events(path=DB):

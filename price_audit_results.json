@@ -1,0 +1,280 @@
+{
+  "run_url": "https://github.com/Doe880/pub_price_monitor/actions/runs/44323594034",
+  "checked_on": "2026-11-18",
+  "criteria": "source status ok or partial and count > 0",
+  "results": [
+    {
+      "source": "dubliner_food",
+      "pub": "Дублинец",
+      "status": "ok",
+      "count": 17,
+      "message": ""
+    },
+    {
+      "source": "dubliner_beer",
+      "pub": "Дублинец",
+      "status": "ok",
+      "count": 68,
+      "message": ""
+    },
+    {
+      "source": "mp_4652_food",
+      "pub": "4Brewers Pub Moscow",
+      "status": "ok",
+      "count": 11,
+      "message": ""
+    },
+    {
+      "source": "mp_284_food",
+      "pub": "Lion’s Head Pub",
+      "status": "ok",
+      "count": 28,
+      "message": ""
+    },
+    {
+      "source": "mp_284_beer",
+      "pub": "Lion’s Head Pub",
+      "status": "ok",
+      "count": 65,
+      "message": "Объём не указан: БАЛТИКА БРЮ Медный Брюн 0,44\nОбъём не указан: БАЛТИКА БРЮ Техно АйПиЭй 0,44\nОбъём не указан: Murphy’s Irish Stout\nОбъём не указан: Fuller’s London Pride, 4,7%\nОбъём не указан: Hobgoblin Gold, 4,2%\nОбъём не указан: Newcastle 0,33\nОбъём не указан: Клаустайлер б/а\nОбъём не указан: Maisel’s weisse n/a 0,5\nОбъём не указан: Nittenauer IPA N/A"
+    },
+    {
+      "source": "mp_243_food",
+      "pub": "The Tipsy Pub",
+      "status": "ok",
+      "count": 20,
+      "message": ""
+    },
+    {
+      "source": "mp_243_beer",
+      "pub": "The Tipsy Pub",
+      "status": "ok",
+      "count": 53,
+      "message": "Объём не указан: Clausthaler 0,33\nОбъём не указан: Meisel's Weisse n/a 0.5\nОбъём не указан: Guinness Draught Alcohol Free 0,44\nОбъём не указан: БАЛТИКА 0 0,5\nОбъём не указан: Nittenauer IPA n/a 0,33\nОбъём требует проверки: Gletcher Milk of Amnesia V. Tropic 5,5% 0,5ml\nОбъём не указан: Gletcher Milk of Amnesia V. Tropic 5,5% 0,5ml\nОбъём не указан: Belhaven Mccallum's stout 4,1% 0,44\nОбъём не указан: Fuller's London Pride 4,7% 0,5\nОбъём не указан: Newcastle brown ale 4,7% 0,33\nОбъём не указан: Pilsner Urquell 4,4% 0,5\nОбъём не указан: Балтика Русский Имперский Стаут 8% 0,44\nОбъём не указан: Балтика Брю ИПА 7,5%, 0,44\nОбъём не указан: Friday Avenue APA 4,7%, 0,5\nОбъём не указан: Ausweis 5,2%, 0,5\nОбъём не указан: Ruby Road 7, 0,5\nОбъём требует проверки: Harp Irish Lager 4%, 0,44ml\nОбъём не указан: Harp Irish Lager 4%, 0,44ml"
+    },
+    {
+      "source": "chelsea_food",
+      "pub": "Chelsea GastroPub",
+      "status": "partial",
+      "count": 19,
+      "message": "Исключены конфликтующие позиции: Говяжьи ребра"
+    },
+    {
+      "source": "ed_3686_food",
+      "pub": "Sean O’Neill Irish Pub",
+      "status": "ok",
+      "count": 23,
+      "message": ""
+    },
+    {
+      "source": "delirium_food",
+      "pub": "Белая горячка / Delirium",
+      "status": "ok",
+      "count": 14,
+      "message": ""
+    },
+    {
+      "source": "delirium_beer",
+      "pub": "Белая горячка / Delirium",
+      "status": "partial",
+      "count": 124,
+      "message": "Объём требует проверки: Tripel Lefort (Трипл Лефорт) — Некорректный объём в источнике: 0,33 мл. Не пересчитывается на 0,5 л.\nЧасть вариантов без цены: Chapeau lambic (Шапо ламбик)\nОбъём не указан: Deliria (Делирия)\nОбъём не указан: O'hara's irish red(Охарас айриш ред)\nОбъём не указан: St. Peter's ruby red ale(Сейнт Питерс Руби Рэд Эль)"
+    },
+    {
+      "source": "mp_27_food",
+      "pub": "Black Swan",
+      "status": "ok",
+      "count": 19,
+      "message": ""
+    },
+    {
+      "source": "mp_27_beer",
+      "pub": "Black Swan",
+      "status": "ok",
+      "count": 82,
+      "message": "Объём не указан: Балтика Stout\nОбъём не указан: Балтика Stout\nОбъём не указан: Балтика Helles\nОбъём не указан: Балтика Helles\nОбъём не указан: Guinness\nОбъём не указан: Guinness\nОбъём не указан: Ballantine stout\nОбъём не указан: Ballantine stout\nОбъём не указан: Eggenberg Helle Wiesse\nОбъём не указан: Eggenberg Helle Wiesse\nОбъём не указан: Petrus Ruby\nОбъём не указан: Petrus Ruby\nОбъём не указан: Black Swan Pils\nОбъём не указан: Black Swan Pils\nОбъём не указан: Old Speckled Hen\nОбъём не указан: Old Speckled Hen\nОбъём не указан: Garigan's Sweet Stout\nОбъём не указан: Garigan's Sweet Stout\nОбъём не указан: TUT IPA\nОбъём не указан: TUT IPA\nОбъём не указан: Inedit Damm\nОбъём не указан: Inedit Damm\nОбъём не указан: Petrus Kriek\nОбъём не указан: Petrus Kriek\nОбъём не указан: Балтика Брю Медный Брюн\nОбъём не указан: Балтика Брю Техно Ипа\nОбъём не указан: Балтика Русский Имперский Стаут\nОбъём не указан: St. Feuillien Grand Cru\nОбъём не указан: Guinness AF\nОбъём не указан: Балтика 0"
+    },
+    {
+      "source": "mp_395_food",
+      "pub": "Post Pub",
+      "status": "partial",
+      "count": 13,
+      "message": "Сайт предупреждает об обновлении меню и возможном отсутствии позиций; цены опубликованы, наличие не подтверждено."
+    },
+    {
+      "source": "mp_395_beer",
+      "pub": "Post Pub",
+      "status": "ok",
+      "count": 16,
+      "message": "Объём не указан: POST NITRO L AGER\nОбъём не указан: POST STOU T\nОбъём не указан: RIEGELE HEFE WEISSE\nОбъём не указан: DACHA CHERRY\nОбъём не указан: BL ACK SHEEP STOUT\nОбъём не указан: BARBE RUBY\nОбъём не указан: RIEGELE COMMERZIENRAT PRIVAT\nОбъём не указан: SKAL AK DVANÁCTKA PREMIUM LEZAC\nОбъём не указан: POST HELLES\nОбъём не указан: POST IPA\nОбъём не указан: DACHA PEACH FRUIT\nОбъём не указан: MILK OF AMNESIA\nОбъём не указан: BL ANCHE DE BRABANT\nОбъём не указан: ОРИГАМИКА IPA Б/А\nОбъём не указан: ОРИГАМИКА MILK STOUT Б/А\nОбъём не указан: DACHA EXTRA STOUT"
+    },
+    {
+      "source": "mp_24_beer",
+      "pub": "Бобби Дэззлер",
+      "status": "ok",
+      "count": 38,
+      "message": ""
+    },
+    {
+      "source": "ed_3586_beer",
+      "pub": "Золберг Пивной Клуб",
+      "status": "ok",
+      "count": 24,
+      "message": ""
+    },
+    {
+      "source": "ed_3637_food",
+      "pub": "O’Donoghue’s Pub",
+      "status": "ok",
+      "count": 19,
+      "message": ""
+    },
+    {
+      "source": "ed_3637_beer",
+      "pub": "O’Donoghue’s Pub",
+      "status": "ok",
+      "count": 57,
+      "message": "Объём не указан: Балтика Helles\nОбъём не указан: Балтика Helles\nОбъём не указан: Балтика Stout\nОбъём не указан: Балтика Stout\nОбъём не указан: Ballantine Stout\nОбъём не указан: Ballantine Stout\nОбъём не указан: Ballantine Ale\nОбъём не указан: Ballantine Ale\nОбъём не указан: Rye River Irish Red Ale\nОбъём не указан: Rye River Irish Red Ale\nОбъём не указан: Hofbräuhaus Traunstein Lagerhell\nОбъём не указан: Hofbräuhaus Traunstein Lagerhell\nОбъём не указан: Guinness\nОбъём не указан: Guinness\nОбъём не указан: Rouge de Bruxelles\nОбъём не указан: Rouge de Bruxelles\nОбъём не указан: Blanche de Bruxelles\nОбъём не указан: Blanche de Bruxelles\nОбъём не указан: Stiegl Goldbrau\nОбъём не указан: Stiegl Goldbrau\nОбъём не указан: Timmermans kriek\nОбъём не указан: Timmermans kriek\nОбъём не указан: Rye River Eventide Stout\nОбъём не указан: Rye River Eventide Stout\nОбъём не указан: Rye River Retro IPA\nОбъём не указан: Rye River Retro IPA\nОбъём не указан: Bourgogne des Flandres\nОбъём не указан: Bourgogne des Flandres\nОбъём не указан: Schnitzlbaumer Hell\nОбъём не указан: Schnitzlbaumer Hell\nОбъём не указан: Tour de Grapefruit Blanche\nОбъём не указан: Tour de Grapefruit Blanche\nОбъём не указан: Black Sheep IPA 4,6%\nОбъём не указан: Black Sheep IPA 4,6%\nОбъём не указан: Brewmaster Irish Lager\nОбъём не указан: Brewmaster Irish Lager\nОбъём не указан: Bakalar Dry Hopped\nОбъём не указан: Bakalar Dry Hopped\nОбъём не указан: БАЛТИКА БРЮ Медный Брюн 0,44\nОбъём не указан: БАЛТИКА БРЮ Техно АйПиЭй 0,44 6,5%\nОбъём не указан: Guinness 0.0\nОбъём не указан: Newcastle Brown Ale 0,33\nОбъём не указан: Fuller's London Porter 5,4% 0,5\nОбъём не указан: Fuller's London Pride 4,7% 0,5\nОбъём не указан: Petrus Tripel 8% 0,33\nОбъём не указан: Petrus Red 8,5% 0,33\nОбъём не указан: Petrus Flanders 5,5% 0,33\nОбъём не указан: Leffe Brune 6,5% 0,33\nОбъём не указан: Leffe Blonde 6,6% 0,33\nОбъём не указан: Belhaven McCallum's Stout 4.1% 0,44\nОбъём не указан: HARP Irish Lager 4% 0,44\nОбъём не указан: Hobgoblin IPA 5% 0,5\nОбъём не указан: Hobgoblin Gold 4,2% 0,5"
+    },
+    {
+      "source": "beeftime_food",
+      "pub": "BeefTime",
+      "status": "ok",
+      "count": 39,
+      "message": ""
+    },
+    {
+      "source": "beeftime_beer",
+      "pub": "BeefTime",
+      "status": "ok",
+      "count": 14,
+      "message": ""
+    },
+    {
+      "source": "mp_23_food",
+      "pub": "Harat’s — Новый Арбат",
+      "status": "ok",
+      "count": 19,
+      "message": ""
+    },
+    {
+      "source": "mp_4601_food",
+      "pub": "Purkin’s Pub — Покровка",
+      "status": "ok",
+      "count": 11,
+      "message": ""
+    },
+    {
+      "source": "mp_4601_beer",
+      "pub": "Purkin’s Pub — Покровка",
+      "status": "ok",
+      "count": 27,
+      "message": ""
+    },
+    {
+      "source": "mp_4589_food",
+      "pub": "Лига Пап",
+      "status": "error",
+      "count": 0,
+      "message": "HTTPError: 403 Client Error: Forbidden for url: https://liga-pap.ru/menu"
+    },
+    {
+      "source": "ed_2453_food",
+      "pub": "Панч и Джуди",
+      "status": "ok",
+      "count": 17,
+      "message": ""
+    },
+    {
+      "source": "ed_2453_beer",
+      "pub": "Панч и Джуди",
+      "status": "ok",
+      "count": 59,
+      "message": "Объём не указан: БАЛТИКА БРЮ Медный Брюн 0,44\nОбъём не указан: БАЛТИКА БРЮ Техно АйПиЭй 0,44\nОбъём не указан: Nittenauer IPA N/A\nОбъём не указан: Clausthaler N/A 0,33\nОбъём не указан: Maisel’s weisse n/a 0,5\nОбъём не указан: Leffe Blonde 0,33, Belgium ale\nОбъём не указан: Leffe Brune 0,33, Belgium ale\nОбъём не указан: Harp 0,44, Irish Lager\nОбъём не указан: Fuller's London Porter 0,5, England porter\nОбъём не указан: Fuller's, London Pride 0,5, England amber ale\nОбъём не указан: Newcastle Brown Ale 0,33, England brown ale\nОбъём не указан: Belhaven McCallum's Stout 0,44, Scottish stout"
+    },
+    {
+      "source": "iggy_beer",
+      "pub": "Iggy Pub",
+      "status": "partial",
+      "count": 44,
+      "message": "Конфликт цен одинаковой позиции: Friday avenue APA"
+    },
+    {
+      "source": "tap_food",
+      "pub": "Tap & Barrel",
+      "status": "ok",
+      "count": 21,
+      "message": ""
+    },
+    {
+      "source": "tap_beer",
+      "pub": "Tap & Barrel",
+      "status": "ok",
+      "count": 54,
+      "message": "Объём не указан: Corona Extra 4,5% 0,35\nОбъём не указан: Delirium Tremens 8,5% 0,33\nОбъём не указан: Delirium Red 8% 0,33\nОбъём не указан: Straffe Hendrik Quadruple 11% 0,33\nОбъём не указан: Trappistes Rochefort 8 9,2% 0,33\nОбъём не указан: Piraat 10,5% 0.33\nОбъём не указан: Gulden Draak The Brewmasters 10,5% 0,33\nОбъём не указан: Chimay Triple 8% 0,33\nОбъём не указан: Westmalle Trappist Dubbel 7% 0,75"
+    },
+    {
+      "source": "mp_26_food",
+      "pub": "Abbey Players",
+      "status": "ok",
+      "count": 23,
+      "message": ""
+    },
+    {
+      "source": "mp_26_beer",
+      "pub": "Abbey Players",
+      "status": "ok",
+      "count": 51,
+      "message": "Объём не указан: Estrella Free N/A\nОбъём не указан: Maisels Weiss n/a\nОбъём не указан: Clausthaler N/A 0,33"
+    },
+    {
+      "source": "mp_4591_food",
+      "pub": "Michael Collins",
+      "status": "ok",
+      "count": 15,
+      "message": ""
+    },
+    {
+      "source": "tweed_food",
+      "pub": "Tweed & Stout",
+      "status": "ok",
+      "count": 8,
+      "message": ""
+    },
+    {
+      "source": "ed_4252_food",
+      "pub": "Паб 2:2",
+      "status": "ok",
+      "count": 23,
+      "message": ""
+    },
+    {
+      "source": "ed_4252_beer",
+      "pub": "Паб 2:2",
+      "status": "ok",
+      "count": 33,
+      "message": "Объём не указан: Фирменное светлое 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Фирменное темное 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Штигель Голдбрау 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Шофферхоффер Хефевайцен 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Блэк Шип Айриш стаут 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Аффлигем 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Бланш де Брюссель 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Бургунь де Фландер 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Тиммерманс Крик 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Дача РЭД 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Атомная прачечная 0,3/0,5 — сохранены исходные значения без единицы\nОбъём не указан: Старлингтонс Дэй Инн Парадайз (Англия) 4,7%, 0,5 — сохранены исходные значения без единицы\nОбъём не указан: Белхавен МакКаллумс (Шотландия), 4,1%, 0,44 — сохранены исходные значения без единицы\nОбъём не указан: Гиннесс (Ирландия) 4,2%, 0,44 — сохранены исходные значения без единицы\nОбъём не указан: Джоус NOEL 9%, 0,33 — сохранены исходные значения без единицы\nОбъём не указан: Дача №1 Лагер 5,0%, 0,33 — сохранены исходные значения без единицы\nОбъём не указан: Дача №2 Вайцен 4,6%, 0,33 — сохранены исходные значения без единицы\nОбъём не указан: Дача Вишня 5,1%, 0,33 — сохранены исходные значения без единицы\nОбъём не указан: Дача Персик 5,1%, 0,33 — сохранены исходные значения без единицы\nОбъём не указан: Джоус Нитростаут (Россия) 6%, 0,5 — сохранены исходные значения без единицы\nОбъём не указан: Клаусталер 0,33 — сохранены исходные значения без единицы\nОбъём не указан: Дача 0,33 — сохранены исходные значения без единицы"
+    },
+    {
+      "source": "ed_3928_food",
+      "pub": "Jim’s Pub",
+      "status": "ok",
+      "count": 12,
+      "message": ""
+    },
+    {
+      "source": "ed_3928_beer",
+      "pub": "Jim’s Pub",
+      "status": "ok",
+      "count": 26,
+      "message": ""
+    },
+    {
+      "source": "sixteen_tons_night_food",
+      "pub": "16 Тонн",
+      "status": "error",
+      "count": 0,
+      "message": "PDF содержит страницы без текстового слоя; требуется OCR и ручная сверка"
+    }
+  ]
+}

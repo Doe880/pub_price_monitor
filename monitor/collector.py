@@ -21,6 +21,8 @@ def collect(only=None, progress=None):
             stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'_'+uuid4().hex[:6]
             run_dir = DATA / 'snapshots' / stamp
             hosts = {urlsplit(s['url']).hostname for p in pubs for s in p['sources']}
+            hosts.update(host for p in pubs for s in p['sources']
+                         for host in s.get('browser_hosts', []) if s.get('format') == 'browser')
             fetcher = Fetcher(run_dir, hosts)
             results = []
             sources = [(p,s) for p in pubs if p.get('enabled',True) for s in p['sources']
@@ -33,10 +35,14 @@ def collect(only=None, progress=None):
                         progress(index,len(sources),pub['name']+' / '+s['kind'])
                     rows = []
                     try:
-                        html = fetcher.get(s['url'], kind=s.get('format','html'))
+                        html = (fetcher.get_dynamic(s['url'], s) if s.get('format') == 'browser'
+                                else fetcher.get(s['url'], kind=s.get('format','html')))
                         rows,notes = parse(html,s,fetcher)
                         old = last_good(s['id'])
-                        if len(rows) < s.get('min_items',1):
+                        if any(n.startswith('OCR требует ручной сверки') for n in notes):
+                            status = 'review'
+                            notes.insert(0, 'OCR: снимок сохранён для проверки и не будет показан как актуальная цена')
+                        elif len(rows) < s.get('min_items',1):
                             status = 'review'
                             notes.insert(0,'Подозрительно мало позиций; данные не заменили прошлый снимок')
                         elif old and len(rows) < old['count']*0.65:

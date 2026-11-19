@@ -1,0 +1,4 @@
+-r requirements.txt
+pillow>=11,<12
+pytesseract>=0.3.13,<0.4
+pymupdf>=1.25,<2

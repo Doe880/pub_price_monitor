@@ -274,6 +274,21 @@ def parse_beeftime(html, source):
 
 
 def parse(html, source, fetcher):
+    if source['parser'] == 'document':
+        from .document_menus import parse_document
+        return parse_document(html, source)
+    if source['parser'] == 'structured_html':
+        from .structured_menus import parse_structured_html
+        return parse_structured_html(html, source)
+    if source['parser'] == 'tweed':
+        from .tweed import parse_tweed
+        return parse_tweed(html, source)
+    if source['parser'] == 'chelsea':
+        from .chelsea import parse_chelsea
+        return parse_chelsea(html, source)
+    if source['parser'] == 'krombacher':
+        from .krombacher import parse_krombacher
+        return parse_krombacher(html, source)
     if source['parser'] == 'iggy':
         from .iggy import parse_iggy
         return parse_iggy(html, source)

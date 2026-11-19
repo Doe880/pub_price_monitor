@@ -43,7 +43,7 @@ if not view.empty:
         view = view[view['fresh']]
 
 summary_tab,prices_tab,history_tab,events_tab,registry_tab,sources_tab = st.tabs(
-    ['Обзор','Цены и сравнение','История','Изменения меню','Все пабы','Источники'])
+    ['Обзор','Цены и сравнение','История','Изменения меню','Пабы с ценами','Источники'])
 
 
 def table(data,key=None):
@@ -113,38 +113,80 @@ with prices_tab:
     if view.empty:
         st.info('Нет данных для выбранных фильтров.')
     else:
-        cols = ['pub','district','name','category','subcategory','portion','price_basis','serving_type',
-                'alcohol_free','price','price_500ml','note','change_rub','change_pct','checked_msk','freshness','source_url']
-        table(view[cols],key='prices')
-        st.download_button('Скачать таблицу CSV',csv_bytes(view[cols]),'pub_prices.csv','text/csv')
-        st.caption('Пересчёт на 0,5 л нужен для сравнения. Паб может не продавать такую порцию. «В меню» не подтверждает наличие сегодня.')
-        st.subheader('Сравнение пива')
-        beer = comparable_beer(view)
-        if not beer.empty:
-            left,right = st.columns(2)
-            serving = left.selectbox('Тип подачи',sorted(beer['serving_type'].unique()))
-            free = right.selectbox('Алкоголь',['Обычное','Безалкогольное'])
-            beer = beer[(beer['serving_type']==serving)&(beer['alcohol_free']==(free=='Безалкогольное'))]
-            st.caption('Для каждого названия выбрана порция, ближайшая к 500 мл; при равном расстоянии — большая. Сорта между заведениями не объявляются идентичными.')
+        st.subheader('Фильтры цен')
+        f1, f2, f3 = st.columns(3)
+        price_pubs = f1.multiselect(
+            'Паб', sorted(view['pub'].dropna().unique().tolist()),
+            default=sorted(view['pub'].dropna().unique().tolist()), key='price_pubs')
+        filtered = view[view['pub'].isin(price_pubs)].copy()
+        price_names = f2.multiselect(
+            'Позиция', sorted(filtered['name'].dropna().unique().tolist()),
+            default=[], placeholder='Все позиции', key='price_names')
+        if price_names:
+            filtered = filtered[filtered['name'].isin(price_names)]
+        price_portions = f3.multiselect(
+            'Порция', sorted(filtered['portion'].dropna().unique().tolist()),
+            default=[], placeholder='Все порции', key='price_portions')
+        if price_portions:
+            filtered = filtered[filtered['portion'].isin(price_portions)]
+        chart_type = st.radio('Тип графиков', ['Столбчатый / распределение', 'Линейный'],
+                              horizontal=True, key='price_chart_type')
+        st.caption('Линейный вид соединяет медианные значения по пабам для наглядного сравнения; '
+                   'ось пабов не является временной шкалой и линия не показывает динамику цен.')
+        if filtered.empty:
+            st.info('По выбранным пабам, позициям и порциям цен не найдено.')
+        else:
+            cols = ['pub','district','name','category','subcategory','portion','price_basis','serving_type',
+                    'alcohol_free','price','price_500ml','note','change_rub','change_pct','checked_msk','freshness','source_url']
+            table(filtered[cols], key='prices')
+            st.download_button('Скачать таблицу CSV', csv_bytes(filtered[cols]),
+                               'pub_prices.csv', 'text/csv')
+            st.caption('Пересчёт на 0,5 л нужен для сравнения. Паб может не продавать такую порцию. '
+                       '«В меню» не подтверждает наличие сегодня.')
+            st.subheader('Сравнение пива')
+            beer = comparable_beer(filtered)
             if not beer.empty:
-                fig = px.box(beer,x='pub',y='price_500ml',points='all',color='pub',
-                             hover_data=['name','portion','price'],labels={'pub':'','price_500ml':'Расчёт за 0,5 л, ₽'},
-                             title='Распределение цен по ассортименту')
-                fig.update_layout(showlegend=False,font_size=15)
-                st.plotly_chart(fig,use_container_width=True)
-        st.subheader('Сравнение горячих блюд')
-        food = view[(view['category']=='Горячие блюда')&view['fresh']]
-        if not food.empty:
-            basis = st.radio('Единица цены',['порция','100 г'],horizontal=True)
-            food = food[food['price_basis']==basis]
-            sections = st.multiselect('Разделы меню',sorted(food['subcategory'].unique()))
-            if sections:
-                food = food[food['subcategory'].isin(sections)]
+                left, right = st.columns(2)
+                serving = left.selectbox('Тип подачи', sorted(beer['serving_type'].unique()))
+                free = right.selectbox('Алкоголь', ['Обычное','Безалкогольное'])
+                beer = beer[(beer['serving_type'] == serving) &
+                            (beer['alcohol_free'] == (free == 'Безалкогольное'))]
+                st.caption('Для каждого сорта выбрана порция, ближайшая к 500 мл среди выбранных порций. '
+                           'Сорта разных пабов не считаются идентичными.')
+                if not beer.empty:
+                    if chart_type == 'Линейный':
+                        plot_data = beer.groupby('pub', as_index=False)['price_500ml'].median()
+                        fig = px.line(plot_data, x='pub', y='price_500ml', markers=True,
+                                      labels={'pub':'Паб','price_500ml':'Медианная цена за 0,5 л, ₽'},
+                                      title='Медианные цены пива по пабам (не динамика)')
+                    else:
+                        fig = px.box(beer, x='pub', y='price_500ml', points='all', color='pub',
+                                     hover_data=['name','portion','price'],
+                                     labels={'pub':'','price_500ml':'Расчёт за 0,5 л, ₽'},
+                                     title='Распределение цен по ассортименту')
+                    fig.update_layout(showlegend=False, font_size=15)
+                    st.plotly_chart(fig, use_container_width=True)
+            st.subheader('Сравнение горячих блюд')
+            food = filtered[(filtered['category'] == 'Горячие блюда') & filtered['fresh']]
             if not food.empty:
-                fig = px.box(food,x='pub',y='price',points='all',color='pub',hover_data=['name','portion'],
-                             labels={'pub':'','price':'Цена, ₽'},title='Цены выбранных блюд — состав меню различается')
-                fig.update_layout(showlegend=False,font_size=15)
-                st.plotly_chart(fig,use_container_width=True)
+                basis = st.radio('Единица цены', ['порция','100 г'], horizontal=True)
+                food = food[food['price_basis'] == basis]
+                sections = st.multiselect('Разделы меню', sorted(food['subcategory'].unique()))
+                if sections:
+                    food = food[food['subcategory'].isin(sections)]
+                if not food.empty:
+                    if chart_type == 'Линейный':
+                        plot_data = food.groupby('pub', as_index=False)['price'].median()
+                        fig = px.line(plot_data, x='pub', y='price', markers=True,
+                                      labels={'pub':'Паб','price':'Медианная цена, ₽'},
+                                      title='Медианные цены горячих блюд по пабам (не динамика)')
+                    else:
+                        fig = px.box(food, x='pub', y='price', points='all', color='pub',
+                                     hover_data=['name','portion'],
+                                     labels={'pub':'','price':'Цена, ₽'},
+                                     title='Цены выбранных блюд — состав меню различается')
+                    fig.update_layout(showlegend=False, font_size=15)
+                    st.plotly_chart(fig, use_container_width=True)
 
 with history_tab:
     hist = pd.DataFrame(storage.history_rows())
@@ -213,7 +255,7 @@ with sources_tab:
                  hide_index=True,use_container_width=True,column_config={'Сайт':st.column_config.LinkColumn()})
     st.subheader('Обновление')
     selected_ids = [p['id'] for p in pubs if p['name'] in selected_pubs and any(s.get('enabled',True) for s in p['sources'])]
-    st.caption(f'Обновятся {len(selected_ids)} выбранных заведений с подключёнными меню. Остальные адреса показаны во вкладке «Все пабы».')
+    st.caption(f'Обновятся {len(selected_ids)} выбранных заведений с подключёнными меню. Не имеющие проверенных цен заведения перенесены в архив реестра.')
     if st.button('Проверить цены сейчас',type='primary',disabled=not selected_ids):
         bar = st.progress(0,text='Подготовка…')
         try:
