@@ -26,6 +26,10 @@ jobs:
         if: github.ref == 'refs/heads/feature/easypub-khodynka-20261119'
         continue-on-error: true
         run: python -m monitor.cli collect --only easy_pub_khodynka
+      - name: Probe Easy Pub official paths
+        if: github.ref == 'refs/heads/feature/easypub-khodynka-20261119'
+        continue-on-error: true
+        run: python -m monitor.probe_sources https://easypub.ru/menu https://easypub.ru/menu/goryachie-blyuda/ https://easypub.ru/menu/gril-pasty https://easypub.ru/contacts
       - name: Show latest collector log
         if: always() && github.ref == 'refs/heads/feature/price-filters-and-coverage-20261118'
         run: if [ -f data/monitor.log ]; then tail -n 35 data/monitor.log; fi
