@@ -1,4 +1,6 @@
 import os
+import json
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -114,6 +116,31 @@ with summary_tab:
             st.markdown(st.session_state['ai_result'])
 
 with prices_tab:
+    if ('ИЗИ ПАБ — Ходынка (доставка сети)' in selected_pubs
+            and 'САО' in districts and 'Горячие блюда' in cats
+            and 'Доставка сети' in channels):
+        reference_path = Path(__file__).resolve().parent / 'reference_prices' / 'easypub_delivery_2026-11-19.json'
+        if reference_path.exists():
+            with reference_path.open(encoding='utf-8') as reference_file:
+                reference = json.load(reference_file)
+            reference_rows = pd.DataFrame(reference['items'])
+            reference_rows = reference_rows.rename(columns={
+                'section':'Раздел', 'name':'Позиция', 'portion':'Порция',
+                'price_rub':'Цена доставки, ₽'})
+            if search:
+                reference_rows = reference_rows[reference_rows['Позиция'].str.contains(
+                    search, case=False, regex=False, na=False)]
+            with st.expander('ИЗИ ПАБ — справочный прайс доставки сети', expanded=True):
+                st.warning('Это цены из индексированной версии официального каталога доставки, '
+                           'а не подтверждённые актуальные цены зала на Ходынке. '
+                           'Автоматический сбор пока не прошёл живую проверку.')
+                st.caption('Источник: ' + reference['source_url'] +
+                           ' · проверка индексированной версии: ' + reference['observation_date'] +
+                           ' · дата обновления меню не указана')
+                st.dataframe(reference_rows, use_container_width=True, hide_index=True)
+                st.download_button('Скачать справочные цены Easy Pub CSV',
+                                   csv_bytes(reference_rows), 'easypub_delivery_reference.csv',
+                                   'text/csv')
     if view.empty:
         st.info('Нет данных для выбранных фильтров.')
     else:
