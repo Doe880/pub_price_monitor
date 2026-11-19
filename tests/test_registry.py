@@ -17,7 +17,7 @@ def test_expanded_registry_unique_branch_ids_and_official_sources():
         assert set(p['coverage']) == {'food','beer'}
         for kind, audit in p['coverage'].items():
             assert audit['reason'] and audit['checked_on'] and audit['evidence_url']
-            assert (audit['state']=='connected') == any(s['kind']==kind for s in p['sources'])
+            assert (audit['state']=='connected') == any(s['kind']==kind and s.get('enabled', True) for s in p['sources'])
 
 
 def test_duplicate_irrelevant_tilda_sections_do_not_break_selected_menu():
