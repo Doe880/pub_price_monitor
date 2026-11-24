@@ -8,7 +8,7 @@ from monitor.config import DATA,load_sources
 from monitor import storage
 from monitor.analytics import frame,describe,comparable_beer
 from monitor.collector import collect
-from monitor.ai import summarize, has_api_key, best_deal_rows, summarize_best_deals
+from monitor.ai import summarize, has_api_key, best_deal_rows, summarize_best_deals, deal_scope
 from monitor.coverage import registry_rows
 
 st.set_page_config(page_title='Пабометр · Москва',page_icon='📊',layout='wide')
@@ -226,19 +226,52 @@ with prices_tab:
 
             st.divider()
             st.subheader('ИИ: самые выгодные предложения')
-            st.caption('Отдельные рейтинги по пиву и бургерам. В расчёт входят только свежие успешные цены из выбранных пабов и фильтров. ИИ комментирует уже рассчитанный рейтинг, а не придумывает цены.')
-            beer_deals = best_deal_rows(filtered, 'beer', 5)
-            burger_deals = best_deal_rows(filtered, 'burgers', 5)
-            fresh_count = int(filtered['fresh'].sum()) if 'fresh' in filtered else 0
-            if fresh_count == 0:
-                st.warning('В текущей выборке нет свежих успешных снимков. На Streamlit Cloud база SQLite может быть пустой после перезапуска или цены могли устареть. Запустите сбор.')
-                if st.button('Обновить цены для ИИ-анализа', key='collect_for_ai'):
+            st.caption('Отдельные рейтинги по пиву и бургерам. В расчёт входят свежие успешные цены из выбранных пабов и округов. Фильтры категории, поиска, позиции, порции и переключатель «только свежие» выше не скрывают данные этих двух независимых рейтингов. Цены доставки исключены.')
+            # Dedicated ranking scope: use all menu categories for selected pubs/districts.
+            # Global category, search, item, portion and fresh-only filters must not hide
+            # beer or burgers from their own independent rankings.
+            deal_base = deal_scope(df, districts=districts, pubs=selected_pubs)
+            beer_all = deal_base[
+                (deal_base['category'] == 'Пиво') &
+                deal_base['volume_ml'].notna()
+            ]
+            burger_all = deal_base[
+                (deal_base['category'] == 'Горячие блюда') &
+                (
+                    deal_base['name'].str.contains(
+                        r'бургер|burger|чизбургер|cheeseburger',
+                        case=False, regex=True, na=False
+                    ) |
+                    deal_base['subcategory'].fillna('').str.contains(
+                        r'бургер|burger', case=False, regex=True, na=False
+                    )
+                )
+            ]
+            beer_deals = best_deal_rows(deal_base, 'beer', 5)
+            burger_deals = best_deal_rows(deal_base, 'burgers', 5)
+            beer_fresh = int(beer_all['fresh'].sum())
+            burger_fresh = int(burger_all['fresh'].sum())
+            beer_stale = len(beer_all) - beer_fresh
+            burger_stale = len(burger_all) - burger_fresh
+            if len(beer_deals) < 5 or len(burger_deals) < 5:
+                st.warning(
+                    'Для рейтингов используются отдельные данные по всем выбранным заведениям, '
+                    'независимо от фильтров категорий, названий и порций выше. '
+                    f'Свежих цен пива с объёмом: {beer_fresh}; устаревших/неуспешных: {beer_stale}. '
+                    f'Свежих бургеров: {burger_fresh}; устаревших/неуспешных: {burger_stale}. '
+                    'Для каждого рейтинга требуется минимум 5 позиций.'
+                )
+                if st.button('Собрать свежие цены для рейтингов', key='collect_for_ai'):
                     try:
-                        with st.spinner('Собираю цены из подключённых меню…'):
+                        with st.spinner('Собираю цены из подключённых официальных меню…'):
                             results = collect()
                         ok = sum(x['status'] == 'ok' for x in results)
-                        bad = len(results) - ok
-                        st.success(f'Сбор завершён: {ok} источников успешно, {bad} требуют проверки. Обновляю данные…')
+                        partial = sum(x['status'] == 'partial' for x in results)
+                        bad = len(results) - ok - partial
+                        st.success(
+                            f'Сбор завершён: {ok} успешно, {partial} частично, {bad} с ошибками. '
+                            'Обновляю рейтинги…'
+                        )
                         st.rerun()
                     except Exception as exc:
                         st.error(f'Не удалось обновить цены: {exc}')

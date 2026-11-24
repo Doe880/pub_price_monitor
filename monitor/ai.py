@@ -187,3 +187,17 @@ def _summarize_payload(payload, system):
     cache_file.write_text(json.dumps({'text':result,'model':model,'usage':body.get('usage',{})},
                                      ensure_ascii=False,indent=2), encoding='utf-8')
     return result
+
+
+
+def deal_scope(df, districts=None, pubs=None):
+    """Independent scope for the beer/burger rankings, excluding delivery prices."""
+    if df.empty:
+        return df.copy()
+    out = df.copy()
+    if districts is not None:
+        out = out[out['district'].isin(districts)]
+    if pubs is not None:
+        out = out[out['pub'].isin(pubs)]
+    channel = out['price_channel'].fillna('venue').astype(str).str.casefold()
+    return out[channel.isin({'venue', 'в заведении'})].copy()

@@ -115,3 +115,21 @@ def test_burger_shortlist_detects_burger_section_even_if_name_is_generic():
     data.loc[mask,'name']=[f'Фирменный сэндвич {i}' for i in range(mask.sum())]
     data.loc[mask,'subcategory']='Бургеры'
     assert len(ai.best_deal_rows(data,'burgers',5))==5
+
+
+def test_deal_scope_ignores_ui_category_and_search_filters_but_honors_pubs():
+    data=deal_df()
+    data['district']='ЦАО'
+    scoped=ai.deal_scope(data,districts=['ЦАО'],pubs=['Паб 0','Паб 1'])
+    assert set(scoped['pub'])=={'Паб 0','Паб 1'}
+    assert len(ai.best_deal_rows(scoped,'beer',5))==2
+    assert len(ai.best_deal_rows(scoped,'burgers',5))==2
+
+
+def test_deal_scope_excludes_delivery_even_if_selected_pub_has_delivery_prices():
+    data=deal_df()
+    data['district']='ЦАО'
+    data.loc[data.index[0:4],'price_channel']='delivery'
+    scoped=ai.deal_scope(data,districts=['ЦАО'],pubs=None)
+    assert not scoped['price_channel'].eq('delivery').any()
+    assert len(ai.best_deal_rows(scoped,'beer',5))==4
