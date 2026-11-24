@@ -1,7 +1,7 @@
 name: Python tests
 on:
   push:
-    branches: [master, 'feature/price-filters-and-coverage-20261118', 'feature/easypub-khodynka-20261119', 'feature/ai-best-beer-burgers-20261124', 'fix/ai-deals-and-buddy-diagnostics-20261124', 'fix/ai-rankings-independent-filter-scope-20261124']
+    branches: [master, 'feature/price-filters-and-coverage-20261118', 'feature/easypub-khodynka-20261119', 'feature/ai-best-beer-burgers-20261124', 'fix/ai-deals-and-buddy-diagnostics-20261124', 'fix/ai-rankings-independent-filter-scope-20261124', 'feat/beer-top10-draught-only-20261124']
   pull_request:
     branches: [master]
   workflow_dispatch:
