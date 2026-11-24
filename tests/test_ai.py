@@ -133,3 +133,32 @@ def test_deal_scope_excludes_delivery_even_if_selected_pub_has_delivery_prices()
     scoped=ai.deal_scope(data,districts=['ЦАО'],pubs=None)
     assert not scoped['price_channel'].eq('delivery').any()
     assert len(ai.best_deal_rows(scoped,'beer',5))==4
+
+
+def test_beer_top_ten_contains_only_draught_even_when_bottled_is_cheaper():
+    data=deal_df()
+    extra=[]
+    for i in range(6,12):
+        row=data.iloc[0].copy()
+        row['pub']=f'Паб {i}'
+        row['pub_id']=f'p{i}'
+        row['name']=f'Лагер {i}'
+        row['price']=200+i
+        row['price_500ml']=200+i
+        row['serving_type']='Разливное'
+        row['volume_ml']=500
+        row['series_key']=f's{i}:draught'
+        extra.append(row)
+    data=pd.concat([data,pd.DataFrame(extra)],ignore_index=True)
+    data.loc[data.index[:2],'serving_type']='Бутылочное/баночное'
+    data.loc[data.index[:2],'price_500ml']=1
+    top=ai.best_deal_rows(data,'beer',10)
+    assert len(top)==10
+    assert set(top['serving_type'])=={'Разливное'}
+    assert top['deal_price'].tolist()==sorted(top['deal_price'].tolist())
+
+
+def test_beer_top_ten_requires_ten_fresh_draught_offers():
+    data=deal_df()
+    with pytest.raises(RuntimeError,match='требуется минимум 10'):
+        ai.summarize_best_deals(data,'beer',10)

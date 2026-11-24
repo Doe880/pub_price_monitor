@@ -233,7 +233,8 @@ with prices_tab:
             deal_base = deal_scope(df, districts=districts, pubs=selected_pubs)
             beer_all = deal_base[
                 (deal_base['category'] == 'Пиво') &
-                deal_base['volume_ml'].notna()
+                deal_base['volume_ml'].notna() &
+                deal_base['serving_type'].fillna('').str.casefold().eq('разливное')
             ]
             burger_all = deal_base[
                 (deal_base['category'] == 'Горячие блюда') &
@@ -247,19 +248,19 @@ with prices_tab:
                     )
                 )
             ]
-            beer_deals = best_deal_rows(deal_base, 'beer', 5)
+            beer_deals = best_deal_rows(deal_base, 'beer', 10)
             burger_deals = best_deal_rows(deal_base, 'burgers', 5)
             beer_fresh = int(beer_all['fresh'].sum())
             burger_fresh = int(burger_all['fresh'].sum())
             beer_stale = len(beer_all) - beer_fresh
             burger_stale = len(burger_all) - burger_fresh
-            if len(beer_deals) < 5 or len(burger_deals) < 5:
+            if len(beer_deals) < 10 or len(burger_deals) < 5:
                 st.warning(
                     'Для рейтингов используются отдельные данные по всем выбранным заведениям, '
                     'независимо от фильтров категорий, названий и порций выше. '
-                    f'Свежих цен пива с объёмом: {beer_fresh}; устаревших/неуспешных: {beer_stale}. '
+                    f'Свежих разливных позиций пива с объёмом: {beer_fresh}; устаревших/неуспешных: {beer_stale}. '
                     f'Свежих бургеров: {burger_fresh}; устаревших/неуспешных: {burger_stale}. '
-                    'Для каждого рейтинга требуется минимум 5 позиций.'
+                    'Для рейтинга пива требуется 10 позиций, для бургеров — 5.'
                 )
                 if st.button('Собрать свежие цены для рейтингов', key='collect_for_ai'):
                     try:
@@ -279,19 +280,19 @@ with prices_tab:
                 st.info('Ценовой рейтинг можно посмотреть без ИИ. Для текстового комментария добавьте AI_API_KEY в Streamlit → Settings → Secrets.')
             d1,d2 = st.columns(2)
             with d1:
-                st.markdown('**Пиво — топ-5 по цене за 0,5 л**')
+                st.markdown('**Разливное пиво — топ-10 по цене за 0,5 л**')
                 if beer_deals.empty:
-                    st.info('Нет свежих сопоставимых цен на пиво с указанным объёмом. Проверьте дату последнего успешного сбора и фильтры.')
+                    st.info('Нет свежих сопоставимых цен на разливное пиво с указанным объёмом. Бутылочное и баночное пиво в рейтинг не включается.')
                 else:
                     beer_show = beer_deals[['pub','name','portion','serving_type','alcohol_free','price','price_500ml','source_url']].copy()
                     table(beer_show)
-                    if len(beer_deals) < 5:
-                        st.caption(f'Найдено {len(beer_deals)} позиций; для ИИ-сводки требуется минимум 5.')
+                    if len(beer_deals) < 10:
+                        st.caption(f'Найдено {len(beer_deals)} разливных позиций; для ИИ-сводки требуется минимум 10.')
                 if st.button('ИИ-анализ выгодного пива', key='ai_best_beer',
-                             disabled=not has_api_key() or len(beer_deals)<5):
+                             disabled=not has_api_key() or len(beer_deals)<10):
                     try:
-                        with st.spinner('Анализирую пять лучших предложений пива…'):
-                            st.session_state['ai_best_beer_result'] = summarize_best_deals(filtered,'beer',5)
+                        with st.spinner('Анализирую десять лучших предложений разливного пива…'):
+                            st.session_state['ai_best_beer_result'] = summarize_best_deals(deal_base,'beer',10)
                     except Exception as exc:
                         st.error(str(exc))
                 if st.session_state.get('ai_best_beer_result'):
@@ -309,7 +310,7 @@ with prices_tab:
                              disabled=not has_api_key() or len(burger_deals)<5):
                     try:
                         with st.spinner('Анализирую пять лучших предложений бургеров…'):
-                            st.session_state['ai_best_burgers_result'] = summarize_best_deals(filtered,'burgers',5)
+                            st.session_state['ai_best_burgers_result'] = summarize_best_deals(deal_base,'burgers',5)
                     except Exception as exc:
                         st.error(str(exc))
                 if st.session_state.get('ai_best_burgers_result'):

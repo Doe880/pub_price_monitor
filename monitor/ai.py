@@ -92,6 +92,9 @@ def best_deal_rows(df, kind, limit=5):
     venue_mask = channel.isin({'venue', 'в заведении'})
     fresh = df[(df['fresh']) & venue_mask].copy()
     if kind == 'beer':
+        # The beer shortlist is draught-only: bottled/canned products must never
+        # compete with tap beer, even if their volume is comparable.
+        fresh = fresh[fresh['serving_type'].fillna('').str.casefold().eq('разливное')]
         rows = comparable_beer(fresh)
         rows = rows[rows['price_500ml'].notna()].sort_values(
             ['price_500ml', 'pub', 'name'], ascending=[True, True, True])
@@ -118,7 +121,7 @@ def best_deal_rows(df, kind, limit=5):
 def summarize_best_deals(df, kind, limit=5):
     """LLM commentary on a deterministic shortlist; no synthetic price ranking."""
     rows = best_deal_rows(df, kind, limit)
-    label = 'пиво' if kind == 'beer' else 'бургеры'
+    label = 'разливное пиво' if kind == 'beer' else 'бургеры'
     if len(rows) < limit:
         raise RuntimeError(
             f'Недостаточно свежих сопоставимых предложений по категории «{label}»: '
@@ -128,7 +131,9 @@ def summarize_best_deals(df, kind, limit=5):
             'deal_basis','source_url']
     payload = {
         'category': label,
-        'ranking_rule': 'Первые пять минимальных значений среди свежих успешных цен из выбранных фильтров.',
+        'ranking_rule': (f'Первые {limit} минимальных значений среди свежих успешных цен; '
+                        'для пива — только разливные позиции, цена нормализована к 0,5 л.' if kind == 'beer' else
+                        f'Первые {limit} минимальных значений среди свежих успешных цен.'),
         'rows': json.loads(rows[cols].to_json(orient='records', force_ascii=False)),
         'caveat': ('Для пива рейтинг нормализован на 0,5 л и разделяет тип подачи/безалкогольность. '
                    'Для бургеров сравниваются только цены за порцию; состав и граммовка могут отличаться.')
@@ -140,7 +145,7 @@ def summarize_best_deals(df, kind, limit=5):
         encoded_rows,
         f'Ты аналитик цен пабов. Проанализируй строго переданный топ-{limit} по категории «{label}». '
         'Не меняй порядок и не добавляй предложения. Объясни, почему первые строки выгоднее по '
-        'указанному критерию. Для пива сравнение только по расчёту за 0,5 л с учётом типа подачи '
+        'указанному критерию. Для пива используй только разливные позиции, сравнение по расчёту за 0,5 л '
         'и безалкогольности; для бургеров только цена за порцию, состав и размер могут различаться. '
         'Не утверждай, что блюда идентичны. Укажи паб, позицию, цену, порцию и ссылку источника. '
         'Не придумывай факты. В конце укажи ограничения выборки.'
