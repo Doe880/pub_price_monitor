@@ -228,7 +228,7 @@ with prices_tab:
             st.subheader('ИИ: самые выгодные предложения')
             st.caption('Отдельные рейтинги по пиву и бургерам. В расчёт входят только свежие успешные цены из выбранных пабов и фильтров. ИИ комментирует уже рассчитанный рейтинг, а не придумывает цены.')
             beer_deals = best_deal_rows(filtered, 'beer', 5)
-            burger_deals = __import__('monitor.ai',fromlist=['best_deal_rows']).best_deal_rows(filtered, 'burgers', 5)
+            burger_deals = best_deal_rows(filtered, 'burgers', 5)
             d1,d2 = st.columns(2)
             with d1:
                 st.markdown('**Пиво — топ-5 по цене за 0,5 л**')
@@ -240,7 +240,7 @@ with prices_tab:
                     if len(beer_deals) < 5:
                         st.caption(f'Найдено {len(beer_deals)} позиций; для ИИ-сводки требуется минимум 5.')
                 if st.button('ИИ-анализ выгодного пива', key='ai_best_beer',
-                             disabled=not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key() or len(beer_deals)<5):
+                             disabled=not has_api_key() or len(beer_deals)<5):
                     try:
                         with st.spinner('Анализирую пять лучших предложений пива…'):
                             st.session_state['ai_best_beer_result'] = summarize_best_deals(filtered,'beer',5)
@@ -261,7 +261,7 @@ with prices_tab:
                              disabled=not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key() or len(burger_deals)<5):
                     try:
                         with st.spinner('Анализирую пять лучших предложений бургеров…'):
-                            st.session_state['ai_best_burgers_result'] = __import__('monitor.ai',fromlist=['summarize_best_deals']).summarize_best_deals(filtered,'burgers',5)
+                            st.session_state['ai_best_burgers_result'] = summarize_best_deals(filtered,'burgers',5)
                     except Exception as exc:
                         st.error(str(exc))
                 if st.session_state.get('ai_best_burgers_result'):
