@@ -45,3 +45,58 @@ def test_truncated_ai_not_presented_as_complete(monkeypatch,tmp_path):
     monkeypatch.setattr(ai.requests,'post',lambda *a,**kw:Response())
     with pytest.raises(RuntimeError,match='неполный'):
         ai.summarize(df())
+
+
+def deal_df():
+    rows=[]
+    for i in range(6):
+        common=dict(fresh=True,pub=f'Паб {i}',pub_id=f'p{i}',district='ЦАО',
+            category='Пиво',subcategory='Разливное',price=300+i*20,portion='500 мл',
+            price_basis='порция',serving_type='Разливное',alcohol_free=False,
+            volume_ml=500,price_500ml=300+i*20,previous_price=None,change_pct=None,
+            source_url=f'https://example.org/{i}',change_rub=None,series_key=f's{i}:beer',
+            price_channel='venue',source_id=f's{i}',name=f'Лагер {i}')
+        rows.append(common)
+        burger=common.copy()
+        burger.update(category='Горячие блюда',subcategory='Бургеры',
+            name=f'Бургер {i}',price=450+i*50,portion='300 г',price_basis='порция',
+            volume_ml=None,price_500ml=None,serving_type='',series_key=f's{i}:burger')
+        rows.append(burger)
+    return pd.DataFrame(rows)
+
+
+def test_best_deals_are_separate_and_ranked_by_comparable_price():
+    data=deal_df()
+    beer=ai.best_deal_rows(data,'beer',5)
+    burgers=ai.best_deal_rows(data,'burgers',5)
+    assert len(beer)==5 and len(burgers)==5
+    assert beer['deal_price'].tolist()==[300,320,340,360,380]
+    assert burgers['deal_price'].tolist()==[450,500,550,600,650]
+    assert set(beer['category'])=={'Пиво'}
+    assert set(burgers['category'])=={'Горячие блюда'}
+
+
+def test_best_deals_exclude_stale_and_delivery_prices():
+    data=deal_df()
+    data.loc[data.index[0:2], 'fresh']=False
+    data.loc[data.index[2:4], 'price_channel']='delivery'
+    assert len(ai.best_deal_rows(data,'beer',5))==4
+
+
+def test_burger_ranking_requires_five_positions():
+    data=deal_df()
+    data=data[data['category']!='Горячие блюда']
+    with pytest.raises(RuntimeError,match='требуется минимум 5'):
+        ai.summarize_best_deals(data,'burgers',5)
+
+
+def test_ai_settings_can_read_streamlit_secrets(monkeypatch):
+    monkeypatch.delenv('AI_API_KEY',raising=False)
+    class Secrets:
+        def get(self,key,default=''):
+            return {'AI_API_KEY':'cloud-secret','AI_BASE_URL':'https://api.example.org/v1'}.get(key,default)
+    class FakeStreamlit:
+        secrets=Secrets()
+    monkeypatch.setitem(__import__('sys').modules,'streamlit',FakeStreamlit())
+    assert ai.setting('AI_API_KEY')=='cloud-secret'
+    assert ai.setting('AI_BASE_URL')=='https://api.example.org/v1'
