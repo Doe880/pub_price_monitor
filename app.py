@@ -229,11 +229,26 @@ with prices_tab:
             st.caption('Отдельные рейтинги по пиву и бургерам. В расчёт входят только свежие успешные цены из выбранных пабов и фильтров. ИИ комментирует уже рассчитанный рейтинг, а не придумывает цены.')
             beer_deals = best_deal_rows(filtered, 'beer', 5)
             burger_deals = best_deal_rows(filtered, 'burgers', 5)
+            fresh_count = int(filtered['fresh'].sum()) if 'fresh' in filtered else 0
+            if fresh_count == 0:
+                st.warning('В текущей выборке нет свежих успешных снимков. На Streamlit Cloud база SQLite может быть пустой после перезапуска или цены могли устареть. Запустите сбор.')
+                if st.button('Обновить цены для ИИ-анализа', key='collect_for_ai'):
+                    try:
+                        with st.spinner('Собираю цены из подключённых меню…'):
+                            results = collect()
+                        ok = sum(x['status'] == 'ok' for x in results)
+                        bad = len(results) - ok
+                        st.success(f'Сбор завершён: {ok} источников успешно, {bad} требуют проверки. Обновляю данные…')
+                        st.rerun()
+                    except Exception as exc:
+                        st.error(f'Не удалось обновить цены: {exc}')
+            if not has_api_key():
+                st.info('Ценовой рейтинг можно посмотреть без ИИ. Для текстового комментария добавьте AI_API_KEY в Streamlit → Settings → Secrets.')
             d1,d2 = st.columns(2)
             with d1:
                 st.markdown('**Пиво — топ-5 по цене за 0,5 л**')
                 if beer_deals.empty:
-                    st.info('Нет свежих сопоставимых цен на пиво.')
+                    st.info('Нет свежих сопоставимых цен на пиво с указанным объёмом. Проверьте дату последнего успешного сбора и фильтры.')
                 else:
                     beer_show = beer_deals[['pub','name','portion','serving_type','alcohol_free','price','price_500ml','source_url']].copy()
                     table(beer_show)
@@ -251,14 +266,14 @@ with prices_tab:
             with d2:
                 st.markdown('**Бургеры — топ-5 по цене за порцию**')
                 if burger_deals.empty:
-                    st.info('Не найдено свежих позиций с названием «бургер / burger».')
+                    st.info('Не найдено свежих бургеров. Проверяются названия и разделы меню; проверьте свежесть снимков и выбранные фильтры.')
                 else:
                     burger_show = burger_deals[['pub','name','portion','price','source_url']].copy()
                     table(burger_show)
                     if len(burger_deals) < 5:
                         st.caption(f'Найдено {len(burger_deals)} позиций; для ИИ-сводки требуется минимум 5.')
                 if st.button('ИИ-анализ выгодных бургеров', key='ai_best_burgers',
-                             disabled=not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key() or len(burger_deals)<5):
+                             disabled=not has_api_key() or len(burger_deals)<5):
                     try:
                         with st.spinner('Анализирую пять лучших предложений бургеров…'):
                             st.session_state['ai_best_burgers_result'] = summarize_best_deals(filtered,'burgers',5)
