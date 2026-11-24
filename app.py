@@ -8,7 +8,7 @@ from monitor.config import DATA,load_sources
 from monitor import storage
 from monitor.analytics import frame,describe,comparable_beer
 from monitor.collector import collect
-from monitor.ai import summarize, has_api_key, best_deal_rows, summarize_best_deals
+from monitor.ai import summarize, has_api_key, best_deal_rows, summarize_best_deals, deal_scope
 from monitor.coverage import registry_rows
 
 st.set_page_config(page_title='Пабометр · Москва',page_icon='📊',layout='wide')
@@ -230,11 +230,7 @@ with prices_tab:
             # Dedicated ranking scope: use all menu categories for selected pubs/districts.
             # Global category, search, item, portion and fresh-only filters must not hide
             # beer or burgers from their own independent rankings.
-            deal_base = df[
-                df['district'].isin(districts) &
-                df['pub'].isin(selected_pubs) &
-                (df['price_channel'].fillna('venue') == 'venue')
-            ].copy()
+            deal_base = deal_scope(df, districts=districts, pubs=selected_pubs)
             beer_all = deal_base[
                 (deal_base['category'] == 'Пиво') &
                 deal_base['volume_ml'].notna()
