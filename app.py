@@ -8,7 +8,7 @@ from monitor.config import DATA,load_sources
 from monitor import storage
 from monitor.analytics import frame,describe,comparable_beer
 from monitor.collector import collect
-from monitor.ai import summarize
+from monitor.ai import summarize, has_api_key, best_deal_rows, summarize_best_deals
 from monitor.coverage import registry_rows
 
 st.set_page_config(page_title='Пабометр · Москва',page_icon='📊',layout='wide')
@@ -101,14 +101,14 @@ with summary_tab:
             st.plotly_chart(fig,use_container_width=True)
         st.subheader('Аналитическая записка')
         st.caption('ИИ получает только выбранные свежие цены и историю. Не используется для придумывания или исправления цен. Запрос к API платный; одинаковая выборка кэшируется.')
-        if st.button('Сформировать ИИ-сводку',disabled=not bool(os.getenv('AI_API_KEY'))):
+        if st.button('Сформировать ИИ-сводку',disabled=not has_api_key()):
             try:
                 with st.spinner('Анализирую выбранные наблюдения…'):
                     st.session_state['ai_result'] = summarize(view)
                     st.session_state['ai_scope'] = (tuple(selected_pubs),tuple(cats),search,tuple(view['check_id'].unique()))
             except Exception as exc:
                 st.error(str(exc))
-        if not os.getenv('AI_API_KEY'):
+        if not has_api_key():
             st.info('Для ИИ-сводки заполните AI_API_KEY, AI_BASE_URL и AI_MODEL в .env. Сбор, таблицы, графики и обычная сводка уже работают без API.')
         scope = (tuple(selected_pubs),tuple(cats),search,tuple(view['check_id'].unique()))
         if st.session_state.get('ai_result') and st.session_state.get('ai_scope') == scope:
@@ -222,6 +222,50 @@ with prices_tab:
                                      title='Цены выбранных блюд — состав меню различается')
                     fig.update_layout(showlegend=False, font_size=15)
                     st.plotly_chart(fig, use_container_width=True)
+
+
+            st.divider()
+            st.subheader('ИИ: самые выгодные предложения')
+            st.caption('Отдельные рейтинги по пиву и бургерам. В расчёт входят только свежие успешные цены из выбранных пабов и фильтров. ИИ комментирует уже рассчитанный рейтинг, а не придумывает цены.')
+            beer_deals = best_deal_rows(filtered, 'beer', 5)
+            burger_deals = best_deal_rows(filtered, 'burgers', 5)
+            d1,d2 = st.columns(2)
+            with d1:
+                st.markdown('**Пиво — топ-5 по цене за 0,5 л**')
+                if beer_deals.empty:
+                    st.info('Нет свежих сопоставимых цен на пиво.')
+                else:
+                    beer_show = beer_deals[['pub','name','portion','serving_type','alcohol_free','price','price_500ml','source_url']].copy()
+                    table(beer_show)
+                    if len(beer_deals) < 5:
+                        st.caption(f'Найдено {len(beer_deals)} позиций; для ИИ-сводки требуется минимум 5.')
+                if st.button('ИИ-анализ выгодного пива', key='ai_best_beer',
+                             disabled=not has_api_key() or len(beer_deals)<5):
+                    try:
+                        with st.spinner('Анализирую пять лучших предложений пива…'):
+                            st.session_state['ai_best_beer_result'] = summarize_best_deals(filtered,'beer',5)
+                    except Exception as exc:
+                        st.error(str(exc))
+                if st.session_state.get('ai_best_beer_result'):
+                    st.markdown(st.session_state['ai_best_beer_result'])
+            with d2:
+                st.markdown('**Бургеры — топ-5 по цене за порцию**')
+                if burger_deals.empty:
+                    st.info('Не найдено свежих позиций с названием «бургер / burger».')
+                else:
+                    burger_show = burger_deals[['pub','name','portion','price','source_url']].copy()
+                    table(burger_show)
+                    if len(burger_deals) < 5:
+                        st.caption(f'Найдено {len(burger_deals)} позиций; для ИИ-сводки требуется минимум 5.')
+                if st.button('ИИ-анализ выгодных бургеров', key='ai_best_burgers',
+                             disabled=not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key() or len(burger_deals)<5):
+                    try:
+                        with st.spinner('Анализирую пять лучших предложений бургеров…'):
+                            st.session_state['ai_best_burgers_result'] = summarize_best_deals(filtered,'burgers',5)
+                    except Exception as exc:
+                        st.error(str(exc))
+                if st.session_state.get('ai_best_burgers_result'):
+                    st.markdown(st.session_state['ai_best_burgers_result'])
 
 with history_tab:
     hist = pd.DataFrame(storage.history_rows())
