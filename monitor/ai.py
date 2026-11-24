@@ -146,10 +146,10 @@ def _summarize_payload(payload, system):
     key = setting('AI_API_KEY').strip()
     if not key:
         raise RuntimeError('Добавьте AI_API_KEY в Secrets Streamlit Cloud или локальный .env.')
-    base = os.getenv('AI_BASE_URL','https://api.openai.com/v1').rstrip('/')
+    base = setting('AI_BASE_URL','https://api.openai.com/v1').rstrip('/')
     if urlsplit(base).scheme != 'https':
         raise RuntimeError('AI_BASE_URL должен использовать HTTPS')
-    model = os.getenv('AI_MODEL','gpt-4.1-mini')
+    model = setting('AI_MODEL','gpt-4.1-mini')
     encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True)
     cache = DATA/'ai_cache'
     cache.mkdir(parents=True, exist_ok=True)
@@ -161,7 +161,7 @@ def _summarize_payload(payload, system):
             'Authorization':'Bearer '+key,'Content-Type':'application/json'}, json={
             'model':model,'messages':[{'role':'system','content':system},
                                       {'role':'user','content':encoded}],
-            'max_completion_tokens':int(os.getenv('AI_MAX_COMPLETION_TOKENS','1800'))},
+            'max_completion_tokens':int(setting('AI_MAX_COMPLETION_TOKENS','1800'))},
             timeout=(10,90), allow_redirects=False)
     except requests.RequestException as exc:
         raise RuntimeError('Не удалось связаться с ИИ API: проверьте соединение и адрес провайдера') from exc
