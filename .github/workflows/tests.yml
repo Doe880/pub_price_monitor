@@ -1,7 +1,7 @@
 name: Python tests
 on:
   push:
-    branches: [master, 'feature/price-filters-and-coverage-20261118', 'feature/easypub-khodynka-20261119']
+    branches: [master, 'feature/price-filters-and-coverage-20261118', 'feature/easypub-khodynka-20261119', 'feature/ai-best-beer-burgers-20261124']
   pull_request:
     branches: [master]
   workflow_dispatch:
