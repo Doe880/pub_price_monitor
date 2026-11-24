@@ -8,14 +8,29 @@ import requests
 from .config import DATA
 
 
+def setting(name, default=''):
+    value = os.getenv(name)
+    if value:
+        return value
+    try:
+        import streamlit as st
+        return str(st.secrets.get(name, default))
+    except Exception:
+        return default
+
+
+def has_api_key():
+    return bool(setting('AI_API_KEY').strip())
+
+
 def summarize(df):
-    key = os.getenv('AI_API_KEY','').strip()
+    key = setting('AI_API_KEY').strip()
     if not key:
         raise RuntimeError('Заполните AI_API_KEY в .env. Обычная сводка и сбор доступны без ключа.')
-    base = os.getenv('AI_BASE_URL','https://api.openai.com/v1').rstrip('/')
+    base = setting('AI_BASE_URL','https://api.openai.com/v1').rstrip('/')
     if urlsplit(base).scheme != 'https':
         raise RuntimeError('AI_BASE_URL должен использовать HTTPS')
-    model = os.getenv('AI_MODEL','gpt-4.1-mini')
+    model = setting('AI_MODEL','gpt-4.1-mini')
     fresh = df[df['fresh']].copy()
     if fresh.empty:
         raise RuntimeError('Нет свежих цен для ИИ-анализа')
@@ -47,7 +62,7 @@ def summarize(df):
         response = requests.post(base+'/chat/completions',headers={
             'Authorization':'Bearer '+key,'Content-Type':'application/json'},json={
             'model':model,'messages':[{'role':'system','content':system},{'role':'user','content':encoded}],
-            'max_completion_tokens':int(os.getenv('AI_MAX_COMPLETION_TOKENS','1800'))},timeout=(10,90),allow_redirects=False)
+            'max_completion_tokens':int(setting('AI_MAX_COMPLETION_TOKENS','1800'))},timeout=(10,90),allow_redirects=False)
     except requests.RequestException as exc:
         raise RuntimeError('Не удалось связаться с ИИ API: проверьте соединение и адрес провайдера') from exc
     if response.status_code != 200:
@@ -114,14 +129,7 @@ def summarize_best_deals(df, kind, limit=5):
                    'Для бургеров сравниваются только цены за порцию; состав и граммовка могут отличаться.')
     }
     # Use the existing bounded API/cache/error handling with exactly the shortlist.
-    shortlist = rows.copy()
-    shortlist['fresh'] = True
-    shortlist['change_rub'] = None
-    shortlist['change_pct'] = None
-    shortlist['previous_price'] = None
-    shortlist['series_key'] = shortlist['source_id'].astype(str) + ':' + shortlist['series_key'].astype(str)
-    # Include the explicit ranking data and guardrails in a temporary prompt context.
-    original = summarize
+    # Include the explicit ranked shortlist and guardrails in the prompt context.
     encoded_rows = payload
     return _summarize_payload(
         encoded_rows,
@@ -135,7 +143,7 @@ def summarize_best_deals(df, kind, limit=5):
 
 
 def _summarize_payload(payload, system):
-    key = os.getenv('AI_API_KEY','').strip()
+    key = setting('AI_API_KEY').strip()
     if not key:
         raise RuntimeError('Добавьте AI_API_KEY в Secrets Streamlit Cloud или локальный .env.')
     base = os.getenv('AI_BASE_URL','https://api.openai.com/v1').rstrip('/')
