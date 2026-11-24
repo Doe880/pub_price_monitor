@@ -8,7 +8,7 @@ from monitor.config import DATA,load_sources
 from monitor import storage
 from monitor.analytics import frame,describe,comparable_beer
 from monitor.collector import collect
-from monitor.ai import summarize
+from monitor.ai import summarize, has_api_key, best_deal_rows, summarize_best_deals
 from monitor.coverage import registry_rows
 
 st.set_page_config(page_title='Пабометр · Москва',page_icon='📊',layout='wide')
@@ -101,14 +101,14 @@ with summary_tab:
             st.plotly_chart(fig,use_container_width=True)
         st.subheader('Аналитическая записка')
         st.caption('ИИ получает только выбранные свежие цены и историю. Не используется для придумывания или исправления цен. Запрос к API платный; одинаковая выборка кэшируется.')
-        if st.button('Сформировать ИИ-сводку',disabled=not summarize.__module__ or not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key()):
+        if st.button('Сформировать ИИ-сводку',disabled=not has_api_key()):
             try:
                 with st.spinner('Анализирую выбранные наблюдения…'):
                     st.session_state['ai_result'] = summarize(view)
                     st.session_state['ai_scope'] = (tuple(selected_pubs),tuple(cats),search,tuple(view['check_id'].unique()))
             except Exception as exc:
                 st.error(str(exc))
-        if not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key():
+        if not has_api_key():
             st.info('Для ИИ-сводки заполните AI_API_KEY, AI_BASE_URL и AI_MODEL в .env. Сбор, таблицы, графики и обычная сводка уже работают без API.')
         scope = (tuple(selected_pubs),tuple(cats),search,tuple(view['check_id'].unique()))
         if st.session_state.get('ai_result') and st.session_state.get('ai_scope') == scope:
@@ -227,7 +227,7 @@ with prices_tab:
             st.divider()
             st.subheader('ИИ: самые выгодные предложения')
             st.caption('Отдельные рейтинги по пиву и бургерам. В расчёт входят только свежие успешные цены из выбранных пабов и фильтров. ИИ комментирует уже рассчитанный рейтинг, а не придумывает цены.')
-            beer_deals = __import__('monitor.ai',fromlist=['best_deal_rows']).best_deal_rows(filtered, 'beer', 5)
+            beer_deals = best_deal_rows(filtered, 'beer', 5)
             burger_deals = __import__('monitor.ai',fromlist=['best_deal_rows']).best_deal_rows(filtered, 'burgers', 5)
             d1,d2 = st.columns(2)
             with d1:
@@ -243,7 +243,7 @@ with prices_tab:
                              disabled=not __import__('monitor.ai',fromlist=['has_api_key']).has_api_key() or len(beer_deals)<5):
                     try:
                         with st.spinner('Анализирую пять лучших предложений пива…'):
-                            st.session_state['ai_best_beer_result'] = __import__('monitor.ai',fromlist=['summarize_best_deals']).summarize_best_deals(filtered,'beer',5)
+                            st.session_state['ai_best_beer_result'] = summarize_best_deals(filtered,'beer',5)
                     except Exception as exc:
                         st.error(str(exc))
                 if st.session_state.get('ai_best_beer_result'):
