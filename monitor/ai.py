@@ -88,7 +88,9 @@ def best_deal_rows(df, kind, limit=5):
     from .analytics import comparable_beer
     if df.empty:
         return df.copy()
-    fresh = df[(df['fresh']) & (df['price_channel'].fillna('venue') == 'venue')].copy()
+    channel = df['price_channel'].fillna('venue').astype(str).str.casefold()
+    venue_mask = channel.isin({'venue', 'в заведении'})
+    fresh = df[(df['fresh']) & venue_mask].copy()
     if kind == 'beer':
         rows = comparable_beer(fresh)
         rows = rows[rows['price_500ml'].notna()].sort_values(
@@ -97,8 +99,11 @@ def best_deal_rows(df, kind, limit=5):
         rows['deal_price'] = rows['price_500ml']
         rows['deal_basis'] = 'расчёт за 0,5 л'
     elif kind == 'burgers':
-        mask = fresh['name'].str.contains(
+        name_mask = fresh['name'].str.contains(
             r'бургер|burger|чизбургер|cheeseburger', case=False, regex=True, na=False)
+        section_mask = fresh['subcategory'].fillna('').str.contains(
+            r'бургер|burger', case=False, regex=True, na=False)
+        mask = name_mask | section_mask
         rows = fresh[mask & (fresh['category'] == 'Горячие блюда') &
                      (fresh['price_basis'] == 'порция')].copy()
         rows = rows.sort_values(['price', 'pub', 'name'], ascending=[True, True, True])

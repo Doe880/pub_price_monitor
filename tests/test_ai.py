@@ -100,3 +100,18 @@ def test_ai_settings_can_read_streamlit_secrets(monkeypatch):
     monkeypatch.setitem(__import__('sys').modules,'streamlit',FakeStreamlit())
     assert ai.setting('AI_API_KEY')=='cloud-secret'
     assert ai.setting('AI_BASE_URL')=='https://api.example.org/v1'
+
+
+def test_best_deals_accept_localized_venue_label_after_ui_formatting():
+    data=deal_df()
+    data['price_channel']='В заведении'
+    assert len(ai.best_deal_rows(data,'beer',5))==5
+    assert len(ai.best_deal_rows(data,'burgers',5))==5
+
+
+def test_burger_shortlist_detects_burger_section_even_if_name_is_generic():
+    data=deal_df()
+    mask=data['category']=='Горячие блюда'
+    data.loc[mask,'name']=[f'Фирменный сэндвич {i}' for i in range(mask.sum())]
+    data.loc[mask,'subcategory']='Бургеры'
+    assert len(ai.best_deal_rows(data,'burgers',5))==5
