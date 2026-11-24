@@ -139,7 +139,7 @@ def test_beer_top_ten_contains_only_draught_even_when_bottled_is_cheaper():
     data=deal_df()
     extra=[]
     for i in range(6,12):
-        row=data.iloc[i*2].copy()
+        row=data.iloc[0].copy()
         row['pub']=f'Паб {i}'
         row['pub_id']=f'p{i}'
         row['name']=f'Лагер {i}'
